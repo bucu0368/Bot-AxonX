@@ -9,7 +9,7 @@ class _ignore(commands.Cog):
     """Ignore commands"""
 
     def help_custom(self):
-              emoji = '<:ignore:1330398849101205524>'
+              emoji = '<:ignore:1408880670733897860>'
               label = "Ignore Commands"
               description = "Show you Commands of Ignore"
               return emoji, label, description
