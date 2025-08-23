@@ -9,7 +9,7 @@ class _welcome(commands.Cog):
     """Welcome commands"""
   
     def help_custom(self):
-		      emoji = '<:greet:1330393349441585253>'
+		      emoji = '<:greet:1408882041541361778>'
 		      label = "Welcomer Commands"
 		      description = "Show you Command Of Welcomer"
 		      return emoji, label, description
