@@ -9,7 +9,7 @@ class _moderation(commands.Cog):
     """Moderation commands"""
   
     def help_custom(self):
-		      emoji = '<:Moderation:1330393377203556412>'
+		      emoji = '<:Moderation:1408881135127363584>'
 		      label = "Moderation Commands"
 		      description = "Show you Commands of Moderation"
 		      return emoji, label, description
