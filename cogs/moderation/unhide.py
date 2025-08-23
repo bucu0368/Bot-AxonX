@@ -44,7 +44,7 @@ class HideUnhideView(ui.View):
                 item.disabled = True
         await self.message.edit(view=self)
 
-    @ui.button(style=discord.ButtonStyle.gray, emoji="<:delete:1327842168693461022>")
+    @ui.button(style=discord.ButtonStyle.gray, emoji="<:delete:1408862413515657217>")
     async def delete(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.message.delete()
 
