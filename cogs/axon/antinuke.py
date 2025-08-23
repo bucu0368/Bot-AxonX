@@ -9,7 +9,7 @@ class _antinuke(commands.Cog):
     """Antinuke commands"""
   
     def help_custom(self):
-		      emoji = '<:security:1330393362305515560>'
+		      emoji = '<:security:1408879647973707806>'
 		      label = "Security Commands"
 		      description = "Show you Commands of Antinuke"
 		      return emoji, label, description
