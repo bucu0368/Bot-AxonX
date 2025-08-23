@@ -8,7 +8,7 @@ class _server(commands.Cog):
     """Server commands"""
   
     def help_custom(self):
-		      emoji = '<:Autoreact:1330393356198477824>'
+		      emoji = '<:Autoreact:1408881402883084409>'
 		      label = "Server Commands"
 		      description = "Show you Commands of Server"
 		      return emoji, label, description
