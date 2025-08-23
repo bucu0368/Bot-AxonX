@@ -63,13 +63,13 @@ async def on_ready():
 
 @client.event
 async def on_command_completion(context: commands.Context) -> None:
-    if context.author.id == 767979794411028491:
+    if context.author.id == 1142053791781355561:
         return
 
     full_command_name = context.command.qualified_name
     split = full_command_name.split("\n")
     executed_command = str(split[0])
-    webhook_url = "https://discord.com/api/webhooks/1389541229775159356/fnyxoWRhcIt77OLabLZLLCrKxoxQDmEN4yZbUaDMK82-qymTbMMwwQA5WkFJ4zRi0R_l"
+    webhook_url = "https://discord.com/api/webhooks/1370529951052468295/KYT9QTHy5rrsYAkwKpMKeeYO4Db5X9YkrT5qOrudk0SGcyIbXsHO4s1tLAPHQL77k0fK"
     async with aiohttp.ClientSession() as session:
         webhook = discord.Webhook.from_url(webhook_url, session=session)
 
@@ -99,7 +99,7 @@ async def on_command_completion(context: commands.Context) -> None:
                     inline=False)
 
                 embed.timestamp = discord.utils.utcnow()
-                embed.set_footer(text="Quantum X Development™ ❤️",
+                embed.set_footer(text="GhostX Development™ ❤️",
                                  icon_url=client.user.display_avatar.url)
                 await webhook.send(embed=embed)
             except Exception as e:
@@ -121,7 +121,7 @@ async def on_command_completion(context: commands.Context) -> None:
                     name=" Command Executed By :",
                     value=f"{context.author} | ID: [{context.author.id}](https://discord.com/users/{context.author.id})",
                     inline=False)
-                embed1.set_footer(text=f"Powered by Quantum X Development™",
+                embed1.set_footer(text="Powered by GhostX Development™",
                                   icon_url=client.user.display_avatar.url)
                 await webhook.send(embed=embed1)
             except Exception as e:
