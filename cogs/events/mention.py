@@ -51,8 +51,8 @@ class Mention(commands.Cog):
                     color=self.color,
                     description=f"Hey {message.author.mention},\nPrefix For This Server is `{prefix}`\nServer ID: {message.guild.id}\n\nType `{prefix}help` for more information."
                 )
-                embed.set_thumbnail(url=self.bot.user.avatar.url)
-                embed.set_footer(text="Powered by Axon Development™", icon_url=self.bot.user.avatar.url)
+                embed.set_thumbnail(url=self.bot.user.avatar.url if self.bot.user.avatar else self.bot.user.default_avatar.url)
+                embed.set_footer(text="Powered by Axon Development™", icon_url=self.bot.user.avatar.url if self.bot.user.avatar else self.bot.user.default_avatar.url)
 
                 buttons = [
                     discord.ui.Button(label="Invite", style=discord.ButtonStyle.link, url="https://discord.com/oauth2/authorize?client_id=1327994903048884288&permissions=8&integration_type=0&scope=bot+applications.commands"),
