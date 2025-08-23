@@ -21,7 +21,7 @@ class KickView(ui.View):
             except Exception:
                 pass
 
-    @ui.button(style=discord.ButtonStyle.gray, emoji="<:delete:1327842168693461022>")
+    @ui.button(style=discord.ButtonStyle.gray, emoji="<:delete:1408862413515657217>")
     async def delete(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.message.delete()
 
@@ -62,7 +62,7 @@ class Kick(commands.Cog):
 
         if member not in ctx.guild.members:
             embed = discord.Embed(
-                description=f"**Member Not Found:** The specified member does not exist in this server.",
+                description="**Member Not Found:** The specified member does not exist in this server.",
                 color=self.color
             )
             view = KickView(member)
@@ -86,15 +86,15 @@ class Kick(commands.Cog):
         
         embed = discord.Embed(
             description=(
-                f"**<:user:1329379728603353108> Target User:** [{member}](https://discord.com/users/{member.id})\n"
-                f"<a:mention:1329408091011285113> **User Mention:** {member.mention}\n"
-                f"<:Commands:1329004882992300083> **Reason:** {reason}\n"
-                f"<:tick:1327829594954530896>**DM Sent:** {dm_status}"
+                f"**<:user:1408864581178097815> Target User:** [{member}](https://discord.com/users/{member.id})\n"
+                f"<a:amention:1408864677605413088> **User Mention:** {member.mention}\n"
+                f"<:Commands:1408864951027761243> **Reason:** {reason}\n"
+                f"<:tick:1408864444796370995>**DM Sent:** {dm_status}"
             ),
             color=self.color
         )
         embed.set_author(name=f"Successfully Kicked {member.name}", icon_url=member.avatar.url if member.avatar else member.default_avatar.url)
-        embed.add_field(name="<:U_admin:1327829252120510567> Moderator:", value=ctx.author.mention, inline=False)
+        embed.add_field(name="<:U_admin:1408865099615043648> Moderator:", value=ctx.author.mention, inline=False)
         embed.set_footer(text=f"Requested by {ctx.author}", icon_url=ctx.author.avatar.url if ctx.author.avatar else ctx.author.default_avatar.url)
         embed.timestamp = discord.utils.utcnow()
 
