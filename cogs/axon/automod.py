@@ -8,7 +8,7 @@ class _automod(commands.Cog):
     """Automod commands"""
   
     def help_custom(self):
-		      emoji = '<:Bots:1330393366373863526>'
+		      emoji = '<:Bots3:1408879785656057866>'
 		      label = "Automod Commands"
 		      description = "Show you Commands of automod"
 		      return emoji, label, description
