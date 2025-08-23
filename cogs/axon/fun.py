@@ -9,7 +9,7 @@ class _fun(commands.Cog):
     """Fun commands"""
   
     def help_custom(self):
-		      emoji = '<:Extra:1330393380810657843>'
+		      emoji = '<:Extra:1408880094319218792>'
 		      label = "Fun Commands"
 		      description = "Show you Commands of Fun"
 		      return emoji, label, description
