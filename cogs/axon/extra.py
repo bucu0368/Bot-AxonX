@@ -9,7 +9,7 @@ class _extra(commands.Cog):
     """Utility commands"""
   
     def help_custom(self):
-		      emoji = '<:Utility:1330393368894902272>'
+		      emoji = '<:Utility:1408879943693373461>'
 		      label = "Utility Commands"
 		      description = "Show you Commands of Utility"
 		      return emoji, label, description
