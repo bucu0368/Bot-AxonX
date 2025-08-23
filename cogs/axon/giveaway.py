@@ -9,7 +9,7 @@ class _giveaway(commands.Cog):
     """Giveaway commands"""
   
     def help_custom(self):
-		      emoji = '<:giveaway:1330395924299644980>'
+		      emoji = '<:giveaway:1408880526063829035>'
 		      label = "Giveaway Commands"
 		      description = "Show you Commands of Giveaway"
 		      return emoji, label, description
