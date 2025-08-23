@@ -8,7 +8,7 @@ class _games(commands.Cog):
     """Games commands"""
   
     def help_custom(self):
-		      emoji = '<:games:1330393345796603924>'
+		      emoji = '<:games:1408880231959367742>'
 		      label = "Games Commands"
 		      description = "Show you Commands of Games"
 		      return emoji, label, description
