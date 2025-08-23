@@ -12,7 +12,7 @@ class _vanity(commands.Cog):
 
     def help_custom(self):
 
-              emoji = '<:VanityRoles:1392125176644108359>'
+              emoji = '<:VanityRoles:1408881754428932118>'
 
               label = "Vanity"
 
