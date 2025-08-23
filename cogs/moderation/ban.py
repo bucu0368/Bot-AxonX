@@ -59,7 +59,7 @@ class AlreadyBannedView(ui.View):
         modal = ReasonModal(user=self.user, author=self.author, view=self)
         await interaction.response.send_modal(modal)
 
-    @ui.button(style=discord.ButtonStyle.gray, emoji="<:delete:1327842168693461022>")
+    @ui.button(style=discord.ButtonStyle.gray, emoji="<:delete:1408862413515657217>")
     async def delete(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.message.delete()
 
@@ -75,16 +75,16 @@ class ReasonModal(ui.Modal):
     async def on_submit(self, interaction: discord.Interaction):
         reason = self.reason_input.value or "No reason provided"
         try:
-            await self.user.send(f"<:tick:1327829594954530896> You have been Unbanned from **{self.author.guild.name}** by **{self.author}**. Reason: {reason or 'No reason provided'}")
+            await self.user.send(f"<:tick:1408864444796370995> You have been Unbanned from **{self.author.guild.name}** by **{self.author}**. Reason: {reason or 'No reason provided'}")
             dm_status = "Yes"
         except discord.Forbidden:
             dm_status = "No"
         except discord.HTTPException:
             dm_status = "No"
             
-        embed = discord.Embed(description=f"**<:user:1329379728603353108> Target User:** [{self.user}](https://discord.com/users/{self.user.id})\n<a:mention:1329408091011285113> **User Mention:** {self.user.mention}\n**<:tick:1327829594954530896> DM Sent:** {dm_status}\n**<:Commands:1329004882992300083> Reason:** {reason}", color=0x000000)
+        embed = discord.Embed(description=f"**<:user:1408864581178097815> Target User:** [{self.user}](https://discord.com/users/{self.user.id})\n<a:amention:1408864677605413088> **User Mention:** {self.user.mention}\n**<:tick:1408864444796370995> DM Sent:** {dm_status}\n**<:Commands:1408864951027761243> Reason:** {reason}", color=0x000000)
         embed.set_author(name=f"Successfully Unbanned {self.user.name}", icon_url=self.user.avatar.url if self.user.avatar else self.user.default_avatar.url)
-        embed.add_field(name="<:U_admin:1327829252120510567> Moderator:", value=interaction.user.mention, inline=False)
+        embed.add_field(name="<:U_admin:1408865099615043648> Moderator:", value=interaction.user.mention, inline=False)
         embed.set_footer(text=f"Requested by {self.author}", icon_url=self.author.avatar.url if self.author.avatar else self.author.default_avatar.url)
         embed.timestamp = discord.utils.utcnow()
 
@@ -145,7 +145,7 @@ class Ban(commands.Cog):
 
         bans = [entry async for entry in ctx.guild.bans()]
         if any(ban_entry.user.id == user.id for ban_entry in bans):
-            embed = discord.Embed(description=f"**Requested User is already banned in this server.**", color=self.color)
+            embed = discord.Embed(description="**Requested User is already banned in this server.**", color=self.color)
             embed.add_field(name="__Unban__:", value="Click on the `Unban` button to unban the mentioned user.")
             embed.set_author(name=f"{user.name} is Already Banned!", icon_url=self.get_user_avatar(user))
             embed.set_footer(text=f"Requested by {ctx.author}", icon_url=self.get_user_avatar(ctx.author))
@@ -175,7 +175,7 @@ class Ban(commands.Cog):
                     return await ctx.send(embed=error)
 
         try:
-            await user.send(f"<:icons_warning:1327829522573430864> You have been banned from **{ctx.guild.name}** by **{ctx.author}**. Reason: {reason or 'No reason provided'}")
+            await user.send(f"<:icons_warning:1408865290019668080> You have been banned from **{ctx.guild.name}** by **{ctx.author}**. Reason: {reason or 'No reason provided'}")
             dm_status = "Yes"
         except discord.Forbidden:
             dm_status = "No"
@@ -185,9 +185,9 @@ class Ban(commands.Cog):
         await ctx.guild.ban(user, reason=f"Ban requested by {ctx.author} for reason: {reason or 'No reason provided'}")
 
         reasonn = reason or "No reason provided"
-        embed = discord.Embed(description=f"**<:user:1329379728603353108> Target User:** [{user}](https://discord.com/users/{user.id})\n**<a:mention:1329408091011285113> User Mention:** {user.mention}\n**<:tick:1327829594954530896> DM Sent:** {dm_status}\n**<:Commands:1329004882992300083> Reason:** {reasonn}", color=self.color)
+        embed = discord.Embed(description=f"**<:user:1408864581178097815> Target User:** [{user}](https://discord.com/users/{user.id})\n**<a:amention:1408864677605413088> User Mention:** {user.mention}\n**<:tick:1408864444796370995> DM Sent:** {dm_status}\n**<:Commands:1408864951027761243> Reason:** {reasonn}", color=self.color)
         embed.set_author(name=f"Successfully Banned {user.name}", icon_url=self.get_user_avatar(user))
-        embed.add_field(name="<:U_admin:1327829252120510567> Moderator:", value=ctx.author.mention, inline=False)
+        embed.add_field(name="<:U_admin:1408865099615043648> Moderator:", value=ctx.author.mention, inline=False)
         embed.set_footer(text=f"Requested by {ctx.author}", icon_url=self.get_user_avatar(ctx.author))
         embed.timestamp = discord.utils.utcnow()
 
