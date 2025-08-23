@@ -9,7 +9,7 @@ class _music(commands.Cog):
     """Music commands"""
 
     def help_custom(self):
-              emoji = '<:music:1330393374271737896>'
+              emoji = '<:music:1408881261048631477>'
               label = "Music Commands"
               description = "Show you Commands of Music"
               return emoji, label, description
