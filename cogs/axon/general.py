@@ -9,7 +9,7 @@ class _general(commands.Cog):
     """General commands"""
 
     def help_custom(self):
-              emoji = '<:filder:1330393371650297887>'
+              emoji = '<:filder:1408880380626604142>'
               label = "General Commands"
               description = "Show you Commands of General"
               return emoji, label, description
