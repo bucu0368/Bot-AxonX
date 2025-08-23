@@ -64,11 +64,11 @@ class View(discord.ui.View):
             self.add_item(Dropdown(ctx=self.ctx, options=self.options))
 
     def add_buttons(self):
-        self.homeB = Button(label="", style=discord.ButtonStyle.secondary, emoji="<:rewind1:1329360839874056225>", command=self.set_page, args=0, ctx=self.ctx)
-        self.backB = Button(label="", style=discord.ButtonStyle.secondary, emoji="<:next:1327829548426854522>", command=self.to_page, args=-1, ctx=self.ctx)
-        self.quitB = Button(label="", style=discord.ButtonStyle.danger, emoji="<:delete:1327842168693461022>", command=self.quit, ctx=self.ctx)
-        self.nextB = Button(label="", style=discord.ButtonStyle.secondary, emoji="<:icons_next:1327829470027055184>", command=self.to_page, args=1, ctx=self.ctx)
-        self.lastB = Button(label="", style=discord.ButtonStyle.secondary, emoji="<:forward:1329361532999569439>", command=self.set_last_page, ctx=self.ctx)
+        self.homeB = Button(label="", style=discord.ButtonStyle.secondary, emoji="<:rewind:1408862201925730414>", command=self.set_page, args=0, ctx=self.ctx)
+        self.backB = Button(label="", style=discord.ButtonStyle.secondary, emoji="<:next:1408862306590392330>", command=self.to_page, args=-1, ctx=self.ctx)
+        self.quitB = Button(label="", style=discord.ButtonStyle.danger, emoji="<:delete:1408862413515657217>", command=self.quit, ctx=self.ctx)
+        self.nextB = Button(label="", style=discord.ButtonStyle.secondary, emoji="<:icons_next:1408862511612297326>", command=self.to_page, args=1, ctx=self.ctx)
+        self.lastB = Button(label="", style=discord.ButtonStyle.secondary, emoji="<:forward:1408862612825051257>", command=self.set_last_page, ctx=self.ctx)
 
         buttons = [self.homeB, self.backB, self.quitB, self.nextB, self.lastB]
         for button in buttons:
@@ -93,7 +93,7 @@ class View(discord.ui.View):
 
         options.append(
             discord.SelectOption(label="Home",
-                                 emoji='<:home:1332569722801225749>', description=""))
+                                 emoji='<:home:1408862703920873474>', description=""))
         embeds.append(self.home)
         total_pages += 1
 
