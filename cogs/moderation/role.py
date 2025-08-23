@@ -52,7 +52,7 @@ class Role(commands.Cog):
   @blacklist_check()
   async def role(self, ctx, member: discord.Member, *, role: discord.Role):
     if not ctx.guild.me.guild_permissions.manage_roles:
-        return await ctx.send("<:icons_warning:1327829522573430864> I don't have permission to manage roles!")
+        return await ctx.send("<:icons_warning:1408865290019668080>I don't have permission to manage roles!")
 
     if role >= ctx.guild.me.top_role:
         error = discord.Embed(
@@ -98,13 +98,13 @@ class Role(commands.Cog):
     except discord.Forbidden:
         error = discord.Embed(
             color=self.color,
-            description="<:icons_warning:1327829522573430864> I don't have permission to manage roles for this user!"
+            description="<:icons_warning:1408865290019668080> I don't have permission to manage roles for this user!"
         )
         await ctx.send(embed=error)
     except Exception as e:
         error = discord.Embed(
             color=self.color,
-            description=f"<:icons_warning:1327829522573430864> An unexpected error occurred: {str(e)}"
+            description=f"<:icons_warning:1408865290019668080> An unexpected error occurred: {str(e)}"
         )
         await ctx.send(embed=error)
 
@@ -269,10 +269,10 @@ class Role(commands.Cog):
     if ctx.author == ctx.guild.owner or ctx.author.top_role.position > ctx.guild.me.top_role.position:
         button = Button(label="Confirm",
                         style=discord.ButtonStyle.green,
-                        emoji="<:tick:1327829594954530896>")
+                        emoji="<:tick:1408864444796370995>")
         button1 = Button(label="Cancel",
                          style=discord.ButtonStyle.red,
-                         emoji="<:CrossIcon:1327829124894429235>")
+                         emoji="<:CrossIcon:1408869030172819527>")
 
         async def button_callback(interaction: discord.Interaction):
             count = 0
@@ -291,10 +291,10 @@ class Role(commands.Cog):
                                 print(e)
 
                     await interaction.channel.send(
-                        content=f"<:tick:1327829594954530896> | Successfully assigned {role.mention} to {count} human(s).")
+                        content=f"<:tick:1408864444796370995> | Successfully assigned {role.mention} to {count} human(s).")
                 else:
                     await interaction.response.edit_message(
-                        content="<:icons_warning:1327829522573430864> I am missing the required permissions. Please grant the necessary permissions and try again.",
+                        content="<:icons_warning:1408865290019668080> I am missing the required permissions. Please grant the necessary permissions and try again.",
                         embed=None,
                         view=None)
             else:
@@ -319,7 +319,7 @@ class Role(commands.Cog):
 
         members_without_role = [member for member in ctx.guild.members if not member.bot and role not in member.roles]
         if len(members_without_role) == 0:
-            return await ctx.reply(embed=discord.Embed(description=f"<:icons_warning:1327829522573430864> | All humans already have the {role.mention} role.", color=self.color))
+            return await ctx.reply(embed=discord.Embed(description=f"<:icons_warning:1408865290019668080> | All humans already have the {role.mention} role.", color=self.color))
         else:
             embed = discord.Embed(
                 color=self.color,
@@ -332,7 +332,7 @@ class Role(commands.Cog):
             await ctx.reply(embed=embed, view=view, mention_author=False)
 
     else:
-        denied = discord.Embed(title="<:icons_warning:1327829522573430864> Access Denied",
+        denied = discord.Embed(title="<:icons_warning:1408865290019668080> Access Denied",
             description="Your role should be above my top role.",
             color=0x000000)
         denied.set_footer(text=f"“{ctx.command.qualified_name}” Command executed by {ctx.author}",
@@ -352,10 +352,10 @@ class Role(commands.Cog):
     if ctx.author == ctx.guild.owner or ctx.author.top_role.position > ctx.guild.me.top_role.position:
         button = Button(label="Confirm",
                         style=discord.ButtonStyle.green,
-                        emoji="<:tick:1327829594954530896>")
+                        emoji="<:tick:1408864444796370995>")
         button1 = Button(label="Cancel",
                          style=discord.ButtonStyle.red,
-                         emoji="<:CrossIcon:1327829124894429235>")
+                         emoji="<:CrossIcon:1408869030172819527>")
 
         async def button_callback(interaction: discord.Interaction):
             count = 0
@@ -374,7 +374,7 @@ class Role(commands.Cog):
                                 print(e)
 
                     await interaction.channel.send(
-                        content=f"<:tick:1327829594954530896> | Successfully added {role.mention} to {count} bot(s).")
+                        content=f"<:tick:1408864444796370995> | Successfully added {role.mention} to {count} bot(s).")
                 else:
                     await interaction.response.edit_message(
                         content="I am missing the required permission. Please grant the necessary permissions and try again.",
@@ -402,7 +402,7 @@ class Role(commands.Cog):
 
         bots_without_role = [member for member in ctx.guild.members if member.bot and role not in member.roles]
         if len(bots_without_role) == 0:
-            return await ctx.reply(embed=discord.Embed(description=f"<:icons_warning:1327829522573430864> | All bots already have the {role.mention} role.", color=self.color))
+            return await ctx.reply(embed=discord.Embed(description=f"<:icons_warning:1408865290019668080> | All bots already have the {role.mention} role.", color=self.color))
         else:
             embed = discord.Embed(
                 color=self.color,
@@ -415,7 +415,7 @@ class Role(commands.Cog):
             await ctx.reply(embed=embed, view=view, mention_author=False)
 
     else:
-        denied = discord.Embed(title="<:CrossIcon:1327829124894429235> Access Denied",
+        denied = discord.Embed(title="<:CrossIcon:1408869030172819527> Access Denied",
             description="Your role should be above my top role.",
             color=0x000000)
         denied.set_footer(text=f"“{ctx.command.qualified_name}” Command executed by {ctx.author}",
@@ -435,10 +435,10 @@ class Role(commands.Cog):
     if ctx.author == ctx.guild.owner or ctx.author.top_role.position > ctx.guild.me.top_role.position:
         button = Button(label="Confirm",
                         style=discord.ButtonStyle.green,
-                        emoji="<:tick:1327829594954530896>")
+                        emoji="<:tick:1408864444796370995>")
         button1 = Button(label="Cancel",
                          style=discord.ButtonStyle.red,
-                         emoji="<:CrossIcon:1327829124894429235>")
+                         emoji="<:CrossIcon:1408869030172819527>")
 
         async def button_callback(interaction: discord.Interaction):
             count = 0
@@ -457,7 +457,7 @@ class Role(commands.Cog):
                                 print(e)
 
                     await interaction.channel.send(
-                        content=f"<:tick:1327829594954530896> | Successfully added {role.mention} to {count} unverified member(s).")
+                        content=f"<:tick:1408864444796370995> | Successfully added {role.mention} to {count} unverified member(s).")
                 else:
                     await interaction.response.edit_message(
                         content="I am missing the required permission. Please grant the necessary permissions and try again.",
@@ -494,7 +494,7 @@ class Role(commands.Cog):
         await ctx.reply(embed=embed, view=view, mention_author=False)
 
     else:
-        denied = discord.Embed(title="<:CrossIcon:1327829124894429235> Access Denied",
+        denied = discord.Embed(title="<:CrossIcon:1408869030172819527> Access Denied",
             description="Your role should be above my top role.",
             color=0x000000)
         denied.set_footer(text=f"“{ctx.command.qualified_name}” Command executed by {ctx.author}",
@@ -513,10 +513,10 @@ class Role(commands.Cog):
     if ctx.author == ctx.guild.owner or ctx.author.top_role.position > ctx.guild.me.top_role.position:
         button = Button(label="Confirm",
                         style=discord.ButtonStyle.green,
-                        emoji="<:tick:1327829594954530896>")
+                        emoji="<:tick:1408864444796370995>")
         button1 = Button(label="Cancel",
                          style=discord.ButtonStyle.red,
-                         emoji="<:CrossIcon:1327829124894429235>")
+                         emoji="<:CrossIcon:1408869030172819527>")
 
         async def button_callback(interaction: discord.Interaction):
             count = 0
@@ -534,7 +534,7 @@ class Role(commands.Cog):
                             print(e)
 
                     await interaction.channel.send(
-                        content=f"<:tick:1327829594954530896> | Successfully added {role.mention} to {count} member(s).")
+                        content=f"<:tick:1408864444796370995> | Successfully added {role.mention} to {count} member(s).")
                 else:
                     await interaction.response.edit_message(
                         content="I am missing the required permission. Please grant the necessary permissions and try again.",
@@ -562,7 +562,7 @@ class Role(commands.Cog):
 
         members_without_role = [member for member in ctx.guild.members if role not in member.roles]
         if len(members_without_role) == 0:
-            return await ctx.reply(embed=discord.Embed(description=f"<:icons_warning:1327829522573430864> | {role.mention} is already given to all the members of the server.", color=self.color))
+            return await ctx.reply(embed=discord.Embed(description=f"<:icons_warning:1408865290019668080> | {role.mention} is already given to all the members of the server.", color=self.color))
         else:
             embed = discord.Embed(
                 color=self.color,
@@ -574,7 +574,7 @@ class Role(commands.Cog):
             view.add_item(button1)
             await ctx.reply(embed=embed, view=view, mention_author=False)
     else:
-        denied = discord.Embed(title="<:CrossIcon:1327829124894429235> Access Denied",
+        denied = discord.Embed(title="<:CrossIcon:1408869030172819527> Access Denied",
             description="Your role should be above my top role.",
             color=0x000000)
         denied.set_footer(text=f"“{ctx.command.qualified_name}” Command executed by {ctx.author}",
@@ -608,10 +608,10 @@ class Role(commands.Cog):
     if ctx.author == ctx.guild.owner or ctx.author.top_role.position > ctx.guild.me.top_role.position:
         button = Button(label="Confirm",
                         style=discord.ButtonStyle.green,
-                        emoji="<:tick:1327829594954530896>")
+                        emoji="<:tick:1408864444796370995>")
         button1 = Button(label="Cancel",
                          style=discord.ButtonStyle.red,
-                         emoji="<:CrossIcon:1327829124894429235>")
+                         emoji="<:CrossIcon:1408869030172819527>")
 
         async def button_callback(interaction: discord.Interaction):
             count = 0
@@ -630,7 +630,7 @@ class Role(commands.Cog):
                                 print(e)
 
                     await interaction.channel.send(
-                        content=f"<:tick:1327829594954530896>| Successfully removed {role.mention} from {count} human(s).")
+                        content=f"<:tick:1408864444796370995>| Successfully removed {role.mention} from {count} human(s).")
                 else:
                     await interaction.response.edit_message(
                         content="I am missing the required permission. Please grant the necessary permissions and try again.",
@@ -670,7 +670,7 @@ class Role(commands.Cog):
             view.add_item(button1)
             await ctx.reply(embed=embed, view=view, mention_author=False)
     else:
-        denied = discord.Embed(title="<:CrossIcon:1327829124894429235> Access Denied",
+        denied = discord.Embed(title="<:CrossIcon:1408869030172819527> Access Denied",
             description="Your role should be above my top role.",
             color=0x000000)
         denied.set_footer(text=f"“{ctx.command.qualified_name}” Command executed by {ctx.author}",
@@ -690,10 +690,10 @@ class Role(commands.Cog):
     if ctx.author == ctx.guild.owner or ctx.author.top_role.position > ctx.guild.me.top_role.position:
         button = Button(label="Confirm",
                         style=discord.ButtonStyle.green,
-                        emoji="<:tick:1327829594954530896>")
+                        emoji="<:tick:1408864444796370995>")
         button1 = Button(label="Cancel",
                          style=discord.ButtonStyle.red,
-                         emoji="<:CrossIcon:1327829124894429235>")
+                         emoji="<:CrossIcon:1408869030172819527>")
 
         async def button_callback(interaction: discord.Interaction):
             count = 0
@@ -712,7 +712,7 @@ class Role(commands.Cog):
                                 print(e)
 
                     await interaction.channel.send(
-                        content=f"<:tick:1327829594954530896> | Successfully removed {role.mention} from {count} bot(s).")
+                        content=f"<:tick:1408864444796370995> | Successfully removed {role.mention} from {count} bot(s).")
                 else:
                     await interaction.response.edit_message(
                         content="I am missing the required permission. Please grant the necessary permissions and try again.",
@@ -752,7 +752,7 @@ class Role(commands.Cog):
             view.add_item(button1)
             await ctx.reply(embed=embed, view=view, mention_author=False)
     else:
-        denied = discord.Embed(title="<:CrossIcon:1327829124894429235> Access Denied",
+        denied = discord.Embed(title="<:CrossIcon:1408869030172819527> Access Denied",
             description="Your role should be above my top role.",
             color=0x000000)
         denied.set_footer(text=f"“{ctx.command.qualified_name}” Command executed by {ctx.author}",
@@ -772,10 +772,10 @@ class Role(commands.Cog):
     if ctx.author == ctx.guild.owner or ctx.author.top_role.position > ctx.guild.me.top_role.position:
         button = Button(label="Confirm",
                         style=discord.ButtonStyle.green,
-                        emoji="<:tick:1327829594954530896>")
+                        emoji="<:tick:1408864444796370995>")
         button1 = Button(label="Cancel",
                          style=discord.ButtonStyle.red,
-                         emoji="<:CrossIcon:1327829124894429235>")
+                         emoji="<:CrossIcon:1408869030172819527>")
 
         async def button_callback(interaction: discord.Interaction):
             removed_count = 0
@@ -795,7 +795,7 @@ class Role(commands.Cog):
                                 print(e)
 
                     await interaction.channel.send(
-                        content=f"<:tick:1327829594954530896>| Successfully removed {role.mention} from {removed_count} member(s).")
+                        content=f"<:tick:1408864444796370995>| Successfully removed {role.mention} from {removed_count} member(s).")
                 else:
                     await interaction.response.edit_message(
                         content="I am missing the required permission. Please grant the necessary permissions and try again.",
@@ -833,7 +833,7 @@ class Role(commands.Cog):
             view.add_item(button1)
             await ctx.reply(embed=embed, view=view, mention_author=False)
     else:
-        denied = discord.Embed(title="<:CrossIcon:1327829124894429235> Access Denied",
+        denied = discord.Embed(title="<:CrossIcon:1408869030172819527> Access Denied",
             description="Your role should be above my top role.",
             color=0x000000)
         denied.set_footer(text=f"“{ctx.command.qualified_name}” Command executed by {ctx.author}",
@@ -852,10 +852,10 @@ class Role(commands.Cog):
     if ctx.author == ctx.guild.owner or ctx.author.top_role.position > ctx.guild.me.top_role.position:
         button = Button(label="Yes",
                         style=discord.ButtonStyle.green,
-                        emoji="<:tick:1327829594954530896>")
+                        emoji="<:tick:1408864444796370995>")
         button1 = Button(label="No",
                          style=discord.ButtonStyle.red,
-                         emoji="<:CrossIcon:1327829124894429235>")
+                         emoji="<:CrossIcon:1408869030172819527>")
 
         async def button_callback(interaction: discord.Interaction):
             count = 0
@@ -875,7 +875,7 @@ class Role(commands.Cog):
                                 print(e)
 
                     await interaction.channel.send(
-                        content=f"<:tick:1327829594954530896> | Successfully removed {role.mention} from {count} unverified member(s).")
+                        content=f"<:tick:1408864444796370995> | Successfully removed {role.mention} from {count} unverified member(s).")
                 else:
                     await interaction.response.edit_message(
                         content="I am missing the required permission. Please grant the necessary permissions and try again.",
@@ -915,7 +915,7 @@ class Role(commands.Cog):
             view.add_item(button1)
             await ctx.reply(embed=embed, view=view, mention_author=False)
     else:
-        denied = discord.Embed(title="<:CrossIcon:1327829124894429235> Access Denied",
+        denied = discord.Embed(title="<:CrossIcon:1408869030172819527> Access Denied",
             description="Your role should be above my top role.",
             color=0x000000)
         denied.set_footer(text=f"“{ctx.command.qualified_name}” Command executed by {ctx.author}",
