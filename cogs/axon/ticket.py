@@ -12,7 +12,7 @@ class _ticket(commands.Cog):
 
     def help_custom(self):
 
-              emoji = '<:ticket:1355527347335467191>'
+              emoji = '<:ticket:1408881538673938482>'
 
               label = "Ticket"
 
