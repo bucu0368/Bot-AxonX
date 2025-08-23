@@ -9,7 +9,7 @@ class _voice(commands.Cog):
     """Voice commands"""
   
     def help_custom(self):
-		      emoji = '<:voice:1330393386490003466>'
+		      emoji = '<:voice:1408881896011862118>'
 		      label = "Voice Commands"
 		      description = "Show you Command Of Voice"
 		      return emoji, label, description
