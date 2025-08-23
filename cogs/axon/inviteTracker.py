@@ -12,7 +12,7 @@ class _inviteTracker(commands.Cog):
 
     def help_custom(self):
 
-              emoji = '<:InviteTracker:1392125185817051239>'
+              emoji = '<:InviteTracker:1408880829328916623>'
 
               label = "Invite Tracker"
 
