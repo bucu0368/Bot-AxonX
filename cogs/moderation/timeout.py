@@ -30,7 +30,7 @@ class TimeoutView(ui.View):
         modal = ReasonModal(user=self.user, author=self.author, view=self)
         await interaction.response.send_modal(modal)
 
-    @ui.button(style=discord.ButtonStyle.gray, emoji="<:delete:1327842168693461022>")
+    @ui.button(style=discord.ButtonStyle.gray, emoji="<:delete:1408862413515657217>")
     async def delete(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.message.delete()
 
@@ -61,7 +61,7 @@ class AlreadyTimedoutView(ui.View):
         modal = ReasonModal(user=self.user, author=self.author, view=self)
         await interaction.response.send_modal(modal)
 
-    @ui.button(style=discord.ButtonStyle.gray, emoji="<:delete:1327842168693461022>")
+    @ui.button(style=discord.ButtonStyle.gray, emoji="<:delete:1408862413515657217>")
     async def delete(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.message.delete()
 
@@ -169,7 +169,7 @@ class Mute(commands.Cog):
             return await ctx.send(embed=error)
 
         try:
-            await user.send(f"<:icons_warning:1327829522573430864> You have been muted in **{ctx.guild.name}** by **{ctx.author}** for {duration_text}. Reason: {reason or 'None'}")
+            await user.send(f"<:icons_warning:1408865290019668080> You have been muted in **{ctx.guild.name}** by **{ctx.author}** for {duration_text}. Reason: {reason or 'None'}")
             dm_status = "Yes"
         except discord.Forbidden:
             dm_status = "No"
@@ -199,14 +199,14 @@ class Mute(commands.Cog):
     async def mute_error(self, ctx, error):
         
         if isinstance(error, commands.BotMissingPermissions):
-            embed = discord.Embed(title="<:CrossIcon:1327829124894429235>> Access Denied", description="I don't have permission to mute members.", color=self.color)
+            embed = discord.Embed(title="<:CrossIcon:1408869030172819527>> Access Denied", description="I don't have permission to mute members.", color=self.color)
             await ctx.send(embed=embed)
         elif isinstance(error, discord.Forbidden):
-            embed = discord.Embed(title="<:CrossIcon:1327829124894429235> Missing Permissions", description="I can't mute this user as they might have higher privileges (e.g., Admin).", color=self.color)
+            embed = discord.Embed(title="<:CrossIcon:1408869030172819527> Missing Permissions", description="I can't mute this user as they might have higher privileges (e.g., Admin).", color=self.color)
             await ctx.send(embed=embed)
             
         else:
-            embed = discord.Embed(title="<:CrossIcon:1327829124894429235> Unexpected Error", description=str(error), color=self.color)
+            embed = discord.Embed(title="<:CrossIcon:1408869030172819527> Unexpected Error", description=str(error), color=self.color)
             await ctx.send(embed=embed)
 
 """
