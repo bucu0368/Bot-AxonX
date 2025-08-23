@@ -32,10 +32,10 @@ class LockUnlockView(ui.View):
         await interaction.response.send_message(f"{self.channel.mention} has been unlocked.", ephemeral=True)
 
         embed = discord.Embed(
-            description=f"<:icons_channel:1327829380935843941> **Channel**: {self.channel.mention}\n<:tick:1327829594954530896> **Status**: Unlocked\n<:Commands:1329004882992300083>**Reason:** Unlock request by {self.author}",
+            description=f"<:icons_channel:1408865872386461737> **Channel**: {self.channel.mention}\n<:tick:1408864444796370995> **Status**: Unlocked\n<:Commands:1408864951027761243>**Reason:** Unlock request by {self.author}",
             color=0x000000
         )
-        embed.add_field(name="<:olympus_staff:1228227884481515613> **Moderator:**", value=self.ctx.author.mention, inline=False)
+        embed.add_field(name="<:olympus_staff:1408867299620032532> **Moderator:**", value=self.ctx.author.mention, inline=False)
         embed.set_author(name=f"Successfully Unlocked {self.channel.name}", icon_url="https://cdn.discordapp.com/attachments/1329411292532051999/1329451540028719255/Quantum_X.jpeg?ex=678a63bb&is=6789123b&hm=917647b44f40b887260074c1ccc602f0b7b8f4054c18ccc5ab6a5824bf77a9aa&")
         await self.message.edit(embed=embed, view=self)
 
@@ -44,7 +44,7 @@ class LockUnlockView(ui.View):
                 item.disabled = True
         await self.message.edit(view=self)
 
-    @ui.button(style=discord.ButtonStyle.gray, emoji="<:delete:1327842168693461022>")
+    @ui.button(style=discord.ButtonStyle.gray, emoji="<:delete:1408862413515657217>")
     async def delete(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.message.delete()
 
@@ -65,7 +65,7 @@ class Lock(commands.Cog):
         channel = channel or ctx.channel 
         if channel.permissions_for(ctx.guild.default_role).send_messages is False:
             embed = discord.Embed(
-                description=f"**<:icons_channel:1327829380935843941> Channel**: {channel.mention}\n<:tick:1327829594954530896> **Status**: Already Locked",
+                description=f"**<:icons_channel:1408865872386461737>Channel**: {channel.mention}\n<:tick:1408864444796370995> **Status**: Already Locked",
                 color=self.color
             )
             embed.set_author(name=f"{channel.name} is Already Locked", icon_url="https://cdn.discordapp.com/attachments/1329411292532051999/1329451540028719255/Quantum_X.jpeg?ex=678a63bb&is=6789123b&hm=917647b44f40b887260074c1ccc602f0b7b8f4054c18ccc5ab6a5824bf77a9aa&")
@@ -78,10 +78,10 @@ class Lock(commands.Cog):
         await channel.set_permissions(ctx.guild.default_role, send_messages=False)
 
         embed = discord.Embed(
-            description=f"<:icons_channel:1327829380935843941> **Channel**: {channel.mention}\n<:tick:1327829594954530896> **Status**: Locked\n<:Commands:1329004882992300083> **Reason:** Lock request by {ctx.author}",
+            description=f"<:icons_channel:1408865872386461737> **Channel**: {channel.mention}\n<:tick:1408864444796370995> **Status**: Locked\n<:Commands:1408864951027761243> **Reason:** Lock request by {ctx.author}",
             color=self.color
         )
-        embed.add_field(name="<:U_admin:1327829252120510567> **Moderator:**", value=ctx.author.mention, inline=False)
+        embed.add_field(name="<:U_admin:1408865099615043648> **Moderator:**", value=ctx.author.mention, inline=False)
         embed.set_author(name=f"Successfully Locked {channel.name}", icon_url="https://cdn.discordapp.com/attachments/1329411292532051999/1329451540028719255/Quantum_X.jpeg?ex=678a63bb&is=6789123b&hm=917647b44f40b887260074c1ccc602f0b7b8f4054c18ccc5ab6a5824bf77a9aa&")
         embed.set_footer(text=f"Requested by {ctx.author}", icon_url=ctx.author.avatar.url)
         view = LockUnlockView(channel=channel, author=ctx.author, ctx=ctx)  
