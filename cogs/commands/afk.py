@@ -28,13 +28,13 @@ class OnOrOff(BasicView):
         super().__init__(ctx, timeout=None)
         self.value = None
 
-    @discord.ui.button(label="DM me", emoji="<:tick:1327829594954530896>", custom_id='Yes', style=discord.ButtonStyle.green)
+    @discord.ui.button(label="DM me", emoji="<:tick:1408864444796370995>", custom_id='Yes', style=discord.ButtonStyle.green)
     async def dare(self, interaction: discord.Interaction, button: discord.ui.Button):
         self.value = 'Yes'
         await interaction.response.defer()
         self.stop()
 
-    @discord.ui.button(label="Don't DM", emoji="<:CrossIcon:1327829124894429235>", custom_id='No', style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="Don't DM", emoji="<:CrossIcon:1408869030172819527>", custom_id='No', style=discord.ButtonStyle.danger)
     async def truth(self, interaction: discord.Interaction, button: discord.ui.Button):
         self.value = 'No'
         await interaction.response.defer()
@@ -168,7 +168,7 @@ class afk(commands.Cog):
             reason = "I am afk :)"
 
         if any(invite in reason.lower() for invite in ['discord.gg', 'gg/']):
-            emd = discord.Embed(description="<:icons_warning:1327829522573430864> | You can't advertise Serve Invite in the AFK reason", color=0x0c0606)
+            emd = discord.Embed(description="<:icons_warning:1408865290019668080> | You can't advertise Serve Invite in the AFK reason", color=0x0c0606)
             return await ctx.send(embed=emd)
 
         view = OnOrOff(ctx)
@@ -192,7 +192,7 @@ class afk(commands.Cog):
             await db.commit()
 
             await test.delete()
-            af = discord.Embed(title='<:tick:1327829594954530896> Success', 
+            af = discord.Embed(title='<:tick:1408864444796370995> Success', 
                  description=f'{ctx.author.mention}, You are now marked as AFK due to: **{reason}**', 
                  color=0x000000)
             await ctx.reply(embed=af)
