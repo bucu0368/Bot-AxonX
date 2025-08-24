@@ -211,8 +211,8 @@ class General(commands.Cog):
                         description=f"{message}",
                         color=self.color)
     msg = await ctx.send(embed=emp)
-    await msg.add_reaction("<:tick:1327829594954530896>")
-    await msg.add_reaction("<:CrossIcon:1327829124894429235>")
+    await msg.add_reaction("<:tick:1408864444796370995>")
+    await msg.add_reaction("<:CrossIcon:1408869030172819527>")
 
   
   @commands.command(name="hack",
@@ -283,7 +283,7 @@ class General(commands.Cog):
                 if g.member_count != None)
     guilds = len(self.bot.guilds)
     embed = discord.Embed(
-      title=f"**Quanutum Users**",
+      title=f"**GhostX Users**",
       description=f"❯ Total of __**{users}**__ Users in **{guilds}** Guilds",
       color=self.color)
     await ctx.send(embed=embed)
@@ -316,7 +316,7 @@ class General(commands.Cog):
     await message1.delete()
     embed = discord.Embed(
       title=f"{self.bot.user.name}",
-      description=f"**<:icons_warning:1327829522573430864> Successfully Wizzed {ctx.guild.name}**",
+      description=f"**<:icons_warning:1408865290019668080> Successfully Wizzed {ctx.guild.name}**",
       color=self.color,
       timestamp=ctx.message.created_at)
     embed.set_footer(
@@ -435,7 +435,7 @@ class General(commands.Cog):
   async def invite(self, ctx: commands.Context):
     embed = discord.Embed(title="Axon X Invite & Support!",
       description=
-      f"> <:icons_plus:1328966531140288524> **[Axon X - Invite Bot](https://discord.com/oauth2/authorize?client_id=1313160406117646417&permissions=8&integration_type=0&scope=bot+applications.commands)**\n> <:icons_plus:1328966531140288524> **[Axon X - Support](https://discord.gg/codexdev)**",
+      f"> <:icons_plus:1409181232155201647> **[Ghost X - Invite Bot](https://discord.com/oauth2/authorize?client_id=1373611245206372444&permissions=8&integration_type=0&scope=bot+applications.commands)**\n> <:icons_plus:1409181232155201647> **[Ghost X - Support](https://discord.gg/u8hxkCWCFZ)**",
       color=0x0ba7ff)
 
     embed.set_footer(text=f"Requested by {ctx.author.name}",
@@ -444,11 +444,11 @@ class General(commands.Cog):
       label='Invite',
       style=discord.ButtonStyle.link,
       url=
-      'https://discord.com/oauth2/authorize?client_id=1313160406117646417&permissions=8&integration_type=0&scope=bot+applications.commands'
+      'https://discord.com/oauth2/authorize?client_id=1373611245206372444&permissions=8&integration_type=0&scope=bot+applications.commands'
     )
     support = Button(label='Support',
                     style=discord.ButtonStyle.link,
-                    url=f'https://discord.gg/codexdev')
+                    url=f'https://discord.gg/u8hxkCWCFZ')
     view = View()
     view.add_item(invite)
     view.add_item(support)
