@@ -49,7 +49,7 @@ class Button(discord.ui.Button):
 class View(discord.ui.View):
 
     def __init__(self, mapping: dict, ctx: discord.ext.commands.context.Context, homeembed: discord.embeds.Embed, ui: int):
-        super().__init__(timeout=None)
+        super().__init__(timeout=300)
         self.mapping, self.ctx, self.home = mapping, ctx, homeembed
         self.index, self.buttons = 0, None
 
@@ -83,6 +83,7 @@ class View(discord.ui.View):
                 if label == value:
                     return i + 1
                 i += 1
+        return 0
 
     def get_cogs(self):
         return list(self.mapping.keys())
@@ -98,25 +99,29 @@ class View(discord.ui.View):
         total_pages += 1
 
         for cog in self.get_cogs():
-            if "help_custom" in dir(cog):
-                emoji, label, description = cog.help_custom()
-                options.append(discord.SelectOption(label=label, emoji=emoji, description=description))
-                embed = discord.Embed(title=f"{emoji} {label}",
-                                      color=0x000000)
+            if cog and "help_custom" in dir(cog):
+                try:
+                    emoji, label, description = cog.help_custom()
+                    options.append(discord.SelectOption(label=label, emoji=emoji, description=description))
+                    embed = discord.Embed(title=f"{emoji} {label}",
+                                          color=0x000000)
 
-                for command in cog.get_commands():
-                    params = ""
-                    for param in command.clean_params:
-                        params += f" <{param}>"
-                    embed.add_field(name=f"{command.name}{params}",
-                                    value=f"{command.help}\n\u200b",
-                                    inline=False)
+                    for command in cog.get_commands():
+                        params = ""
+                        for param in command.clean_params:
+                            params += f" <{param}>"
+                        embed.add_field(name=f"{command.name}{params}",
+                                        value=f"{command.help or 'No description provided'}\n\u200b",
+                                        inline=False)
 
-                embeds.append(embed)
-                total_pages += 1
+                    embeds.append(embed)
+                    total_pages += 1
+                except Exception as e:
+                    print(f"Error processing cog {cog}: {e}")
+                    continue
 
         self.home.set_footer(text=f"• Help page 1/{total_pages} | Requested by: {self.ctx.author.display_name}",
-                             icon_url=f"{self.ctx.bot.user.avatar.url}")
+                             icon_url=self.ctx.bot.user.avatar.url if self.ctx.bot.user.avatar else self.ctx.bot.user.default_avatar.url)
 
         return options, embeds, total_pages
 
@@ -125,12 +130,14 @@ class View(discord.ui.View):
         await interaction.delete_original_response()
 
     async def to_page(self, page: int, interaction: discord.Interaction):
-        if not self.index + page < 0 or not self.index + page > len(self.options):
+        if not (self.index + page < 0 or self.index + page >= len(self.options)):
             await self.set_index(page)
             embed = self.embeds[self.index]
             embed.set_footer(text=f"• Help page {self.index + 1}/{self.total_pages} | Requested by: {self.ctx.author.display_name}",
-                             icon_url=f"{self.ctx.bot.user.avatar.url}")
+                             icon_url=self.ctx.bot.user.avatar.url if self.ctx.bot.user.avatar else self.ctx.bot.user.default_avatar.url)
             await interaction.response.edit_message(embed=embed, view=self)
+        else:
+            await interaction.response.defer()
 
     async def set_page(self, page: int, interaction: discord.Interaction):
         self.index = page
@@ -148,3 +155,12 @@ class View(discord.ui.View):
 
     async def set_last_page(self, interaction: discord.Interaction):
         await self.set_page(len(self.options) - 1, interaction)
+
+    async def on_timeout(self):
+        for item in self.children:
+            item.disabled = True
+        try:
+            if hasattr(self, 'message') and self.message:
+                await self.message.edit(view=self)
+        except:
+            pass
