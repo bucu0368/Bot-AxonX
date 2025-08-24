@@ -55,7 +55,7 @@ class Antinuke(commands.Cog):
 
     is_owner = ctx.author.id == ctx.guild.owner_id
     if not is_owner and not check:
-      embed = discord.Embed(title="<:CrossIcon:1327829124894429235> Access Denied",
+      embed = discord.Embed(title="<:CrossIcon:1408869030172819527> Access Denied",
                 color=0x000000,
                 description="Only Server Owner or Extra Owner can Run this Command!"
             )
@@ -79,7 +79,7 @@ class Antinuke(commands.Cog):
     elif option.lower() == 'enable':
       if is_activated:
         embed = discord.Embed(
-          description=f'**Security Settings For {ctx.guild.name}**\nYour server __**already has Antinuke enabled.**__\n\nCurrent Status: <:enabled:1204107832232775730> Enabled\nTo Disable use `antinuke disable`',
+          description=f'**Security Settings For {ctx.guild.name}**\nYour server __**already has Antinuke enabled.**__\n\nCurrent Status: <:enabled:1409168510554472588> Enabled\nTo Disable use `antinuke disable`',
           color=0x000000
         )
         embed.set_thumbnail(url=self.bot.user.avatar.url)
@@ -87,29 +87,29 @@ class Antinuke(commands.Cog):
       else:
         
         setup_embed = discord.Embed(
-          title="Antinuke Setup <a:Gear:1329025929971896340>",
-          description="<:tick:1327829594954530896> | Initializing Quick Setup!",
+          title="Antinuke Setup <a:aGear:1409168695946641408>",
+          description="<:tick:1408864444796370995> | Initializing Quick Setup!",
           color=0x000000
         )
         setup_message = await ctx.send(embed=setup_embed)
 
         
         if not ctx.guild.me.guild_permissions.administrator:
-          setup_embed.description += "\n<:icons_warning:1327829522573430864> | Setup failed: Missing **Administrator** permission."
+          setup_embed.description += "\n<:icons_warning:1408865290019668080> | Setup failed: Missing **Administrator** permission."
           await setup_message.edit(embed=setup_embed)
           return
 
         await asyncio.sleep(1)
-        setup_embed.description += "\n<:tick:1327829594954530896>| Checking Axon's role position for optimal configuration..."
+        setup_embed.description += "\n<:tick:1408864444796370995>| Checking Axon's role position for optimal configuration..."
         await setup_message.edit(embed=setup_embed)
 
         await asyncio.sleep(1)
-        setup_embed.description += "\n<:tick:1327829594954530896> | Crafting and configuring the Axon Supreme role..."
+        setup_embed.description += "\n<:tick:1408864444796370995> | Crafting and configuring the Axon Supreme role..."
         await setup_message.edit(embed=setup_embed)
         
         try:
           role = await ctx.guild.create_role(
-            name="Axon Supreme",
+            name="GhostX Supreme",
             color=0x0ba7ff,
             permissions=discord.Permissions(administrator=True),
             hoist=False,
@@ -118,34 +118,34 @@ class Antinuke(commands.Cog):
           )
           await ctx.guild.me.add_roles(role)
         except discord.Forbidden:
-          setup_embed.description += "\n<:icons_warning:1327829522573430864> | Setup failed: Insufficient permissions to create role."
+          setup_embed.description += "\n<:icons_warning:1408865290019668080> | Setup failed: Insufficient permissions to create role."
           await setup_message.edit(embed=setup_embed)
           return
         except discord.HTTPException as e:
-          setup_embed.description += f"\n<:icons_warning:1327829522573430864> | Setup failed: HTTPException: {e}\nCheck Guild **Audit Logs**."
+          setup_embed.description += f"\n<:icons_warning:1408865290019668080> | Setup failed: HTTPException: {e}\nCheck Guild **Audit Logs**."
           await setup_message.edit(embed=setup_embed)
           return
 
         await asyncio.sleep(1)
-        setup_embed.description += "\n<:tick:1327829594954530896>| Ensuring precise placement of the Axon Supreme role..."
+        setup_embed.description += "\n<:tick:1408864444796370995>| Ensuring precise placement of the Axon Supreme role..."
         await setup_message.edit(embed=setup_embed)
         try:
           await ctx.guild.edit_role_positions(positions={role: 1})
         except discord.Forbidden:
-          setup_embed.description += "\n<:icons_warning:1327829522573430864> | Setup failed: Insufficient permissions to move role."
+          setup_embed.description += "\n<:icons_warning:1408865290019668080> | Setup failed: Insufficient permissions to move role."
           await setup_message.edit(embed=setup_embed)
           return
         except discord.HTTPException as e:
-          setup_embed.description += f"\n<:icons_warning:1327829522573430864> | Setup failed: HTTPException: {e}."
+          setup_embed.description += f"\n<:icons_warning:1408865290019668080> | Setup failed: HTTPException: {e}."
           await setup_message.edit(embed=setup_embed)
           return
 
         await asyncio.sleep(1)
-        setup_embed.description += "\n<:tick:1327829594954530896> | Safeguarding your changes..."
+        setup_embed.description += "\n<:tick:1408864444796370995> | Safeguarding your changes..."
         await setup_message.edit(embed=setup_embed)
 
         await asyncio.sleep(1)
-        setup_embed.description += "\<:tick:1327829594954530896> | Activating the Antinuke Modules for enhanced security...!!"
+        setup_embed.description += "\<:tick:1408864444796370995> | Activating the Antinuke Modules for enhanced security...!!"
         await setup_message.edit(embed=setup_embed)
 
         await self.db.execute('INSERT OR REPLACE INTO antinuke (guild_id, status) VALUES (?, ?)', (guild_id, True))
@@ -155,13 +155,13 @@ class Antinuke(commands.Cog):
         await setup_message.delete()
 
         embed = discord.Embed(
-          description=f"**Security Settings For {ctx.guild.name} **\n\nTip: For optimal functionality of the AntiNuke Module, please ensure that my role has **Administration** permissions and is positioned at the **Top** of the roles list\n\n<:iconSetting:1327842140570779658> __**Modules Enabled**__\n>>> <a:enabled_:1329022799708160063> **Anti Ban**\n<a:enabled_:1329022799708160063> **Anti Kick**\n<a:enabled_:1329022799708160063> **Anti Bot**\n<a:enabled_:1329022799708160063> **Anti Channel Create**\n<a:enabled_:1329022799708160063> **Anti Channel Delete**\n<a:enabled_:1329022799708160063> **Anti Channel Update**\n<a:enabled_:1329022799708160063> **Anti Everyone/Here**\n<a:enabled_:1329022799708160063>**Anti Role Create**\n<a:enabled_:1329022799708160063> **Anti Role Delete**\n<a:enabled_:1329022799708160063> **Anti Role Update**\n<a:enabled_:1329022799708160063> **Anti Member Update**\n<a:enabled_:1329022799708160063> **Anti Guild Update**\n<a:enabled_:1329022799708160063> **Anti Integration**\n<a:enabled_:1329022799708160063> **Anti Webhook Create**\n<a:enabled_:1329022799708160063> **Anti Webhook Delete**\n<a:enabled_:1329022799708160063> **Anti Webhook Update**",
+          description=f"**Security Settings For {ctx.guild.name} **\n\nTip: For optimal functionality of the AntiNuke Module, please ensure that my role has **Administration** permissions and is positioned at the **Top** of the roles list\n\n<:iconSetting:1409169224844443731> __**Modules Enabled**__\n>>> <:enabled:1409168510554472588> **Anti Ban**\n<:enabled:1409168510554472588> **Anti Kick**\n<:enabled:1409168510554472588> **Anti Bot**\n<:enabled:1409168510554472588> **Anti Channel Create**\n<:enabled:1409168510554472588> **Anti Channel Delete**\n<:enabled:1409168510554472588> **Anti Channel Update**\n<:enabled:1409168510554472588> **Anti Everyone/Here**\n<:enabled:1409168510554472588>**Anti Role Create**\n<:enabled:1409168510554472588> **Anti Role Delete**\n<:enabled:1409168510554472588> **Anti Role Update**\n<:enabled:1409168510554472588> **Anti Member Update**\n<:enabled:1409168510554472588> **Anti Guild Update**\n<:enabled:1409168510554472588> **Anti Integration**\n<:enabled:1409168510554472588> **Anti Webhook Create**\n<:enabled:1409168510554472588> **Anti Webhook Delete**\n<:enabled:1409168510554472588> **Anti Webhook Update**",
           color=0x000000
         )
 
-        embed.add_field(name='', value="<a:enabled_:1329022799708160063> **Anti Prune**\n **Auto Recovery**")
+        embed.add_field(name='', value="<:enabled:1409168510554472588> **Anti Prune**\n **Auto Recovery**")
 
-        embed.set_author(name="Quantum Antinuke", icon_url=self.bot.user.avatar.url)
+        embed.set_author(name="GhostX Antinuke", icon_url=self.bot.user.avatar.url)
 
         embed.set_footer(text="Successfully Enabled Antinuke for this server | Powered by Quantum X Development™", icon_url=self.bot.user.avatar.url)
         embed.set_thumbnail(url=self.bot.user.avatar.url)
@@ -174,7 +174,7 @@ class Antinuke(commands.Cog):
     elif option.lower() == 'disable':
       if not is_activated:
         embed = discord.Embed(
-          description=f'**Security Settings For {ctx.guild.name}**\nUhh, looks like your server hasn\'t enabled Antinuke.\n\nCurrent Status: <a:disabled1:1329022921427128321> Disabled\n\nTo Enable use `antinuke enable`',
+          description=f'**Security Settings For {ctx.guild.name}**\nUhh, looks like your server hasn\'t enabled Antinuke.\n\nCurrent Status: <a:adisabled:1409166411204399136> Disabled\n\nTo Enable use `antinuke enable`',
           color=0x000000
         )
         embed.set_thumbnail(url=self.bot.user.avatar.url)
@@ -182,7 +182,7 @@ class Antinuke(commands.Cog):
         await self.db.execute('DELETE FROM antinuke WHERE guild_id = ?', (guild_id,))
         await self.db.commit()
         embed = discord.Embed(
-          description=f'**Security Settings For {ctx.guild.name}**\nSuccessfully disabled Antinuke for this server.\n\nCurrent Status: <a:disabled1:1329022921427128321> Disabled\n\nTo Enable use `antinuke enable`',
+          description=f'**Security Settings For {ctx.guild.name}**\nSuccessfully disabled Antinuke for this server.\n\nCurrent Status: <a:adisabled:1409166411204399136> Disabled\n\nTo Enable use `antinuke enable`',
           color=0x000000
         )
         embed.set_thumbnail(url=self.bot.user.avatar.url)
