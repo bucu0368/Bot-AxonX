@@ -64,7 +64,7 @@ class HelpCommand(commands.HelpCommand):
         color=discord.Color.red()
     )
     
-    embed.set_author(name="Command Not Found", icon_url=self.context.bot.user.avatar.url)
+    embed.set_author(name="Command Not Found", icon_url=self.context.bot.user.avatar.url if self.context.bot.user.avatar else self.context.bot.user.default_avatar.url)
     embed.set_footer(text=f"Requested By {ctx.author}",
                        icon_url=ctx.author.avatar.url if ctx.author.avatar else ctx.author.default_avatar.url)
     if matches:
@@ -124,10 +124,12 @@ class HelpCommand(commands.HelpCommand):
 
     embed.set_footer(
       text=f"Requested By {self.context.author} | [Support](discord.gg/codexdev)",
+      icon_url=self.context.author.avatar.url if self.context.author.avatar else self.context.author.default_avatar.url
     )
     
     view = vhelp.View(mapping=mapping, ctx=self.context, homeembed=embed, ui=2)
-    await ctx.reply(embed=embed, view=view)
+    message = await ctx.reply(embed=embed, view=view)
+    view.message = message
 
   async def send_command_help(self, command):
     ctx = self.context
@@ -154,7 +156,7 @@ class HelpCommand(commands.HelpCommand):
     embed.add_field(name="**Usage**",
                       value=f"`{self.context.prefix}{command.signature}`\n")
     embed.set_author(name=f"{command.qualified_name.title()} Command",
-                       icon_url=self.context.bot.user.display_avatar.url)
+                       icon_url=self.context.bot.user.avatar.url if self.context.bot.user.avatar else self.context.bot.user.default_avatar.url)
     await self.context.reply(embed=embed, mention_author=False)
 
   def get_command_signature(self, command: commands.Command) -> str:
