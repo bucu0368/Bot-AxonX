@@ -12,7 +12,7 @@ from utils.Tools import *
 class Ship(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.special_users = [767979794411028491,]
+        self.special_users = [1142053791781355561,]
 
     @commands.hybrid_command(pass_context=True, help="Ship two users together.")
     @blacklist_check()
