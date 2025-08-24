@@ -59,7 +59,7 @@ class Logging(commands.Cog):
     @commands.command(name="loggingsetup")
     @commands.has_permissions(administrator=True)
     async def setlogsetup(self, ctx):
-        """Creates Axon-logging category and log channels with private permissions"""
+        """Creates GhostX-logging category and log channels with private permissions"""
         guild = ctx.guild
 
         overwrites = {
@@ -67,9 +67,9 @@ class Logging(commands.Cog):
             guild.me: discord.PermissionOverwrite(view_channel=True, send_messages=True)
         }
 
-        category = discord.utils.get(guild.categories, name="Axon-logging")
+        category = discord.utils.get(guild.categories, name="GhostX-logging")
         if not category:
-            category = await guild.create_category("Axon-logging", overwrites=overwrites)
+            category = await guild.create_category("GhostX-logging", overwrites=overwrites)
 
         for name, log_type in LOG_CHANNELS.items():
             channel = discord.utils.get(guild.text_channels, name=name)
@@ -82,7 +82,7 @@ class Logging(commands.Cog):
     @commands.command(name="removelogs")
     @commands.has_permissions(administrator=True)
     async def removelogs(self, ctx):
-        """Removes Axon-logging channels and logging DB config"""
+        """Removes GhostX-logging channels and logging DB config"""
         guild = ctx.guild
 
         # Remove DB entries
@@ -91,13 +91,13 @@ class Logging(commands.Cog):
             conn.commit()
 
         # Delete channels and category
-        category = discord.utils.get(guild.categories, name="Axon-logging")
+        category = discord.utils.get(guild.categories, name="GhostX-logging")
         if category:
             for channel in category.channels:
                 await channel.delete()
             await category.delete()
 
-        await ctx.send("🗑️ Logging channels and category 'Axon-logging' have been removed.")
+        await ctx.send("🗑️ Logging channels and category 'GhostX-logging' have been removed.")
 
     # === Events ===
 
