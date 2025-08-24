@@ -65,7 +65,7 @@ class Hide(commands.Cog):
         channel = channel or ctx.channel 
         if not channel.permissions_for(ctx.guild.default_role).read_messages:
             embed = discord.Embed(
-                description=f"**<:icons_channel:1408865872386461737> Channel**: {channel.mention}\n<:tick:1408864444796370995> **Status**: Already Hidden",
+                description=f"**<:icons_channel:1408865872386461737> Channel**: {channel.mention}\n<:tick:1327829594954530896> **Status**: Already Hidden",
                 color=self.color
             )
             embed.set_author(name=f"{channel.name} is Already Hidden", icon_url="https://cdn.discordapp.com/attachments/1329411292532051999/1329451540028719255/Quantum_X.jpeg?ex=678a63bb&is=6789123b&hm=917647b44f40b887260074c1ccc602f0b7b8f4054c18ccc5ab6a5824bf77a9aa&")
@@ -78,7 +78,7 @@ class Hide(commands.Cog):
         await channel.set_permissions(ctx.guild.default_role, read_messages=False)
 
         embed = discord.Embed(
-            description=f"<:icons_channel:1408865872386461737> **Channel**: {channel.mention}\n<:tick:1408864444796370995> **Status**: Hidden\n<:Commands:1408864951027761243> **Reason:** Hide request by {ctx.author}",
+            description=f"<:icons_channel:1408865872386461737> **Channel**: {channel.mention}\n<:tick:1408864444796370995> **Status**: Hidden\n<:Commands:1329004882992300083> **Reason:** Hide request by {ctx.author}",
             color=self.color
         )
         embed.add_field(name="<:U_admin:1408865099615043648> **Moderator:**", value=ctx.author.mention, inline=False)
