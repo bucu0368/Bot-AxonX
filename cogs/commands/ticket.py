@@ -5,7 +5,7 @@ import asyncio
 import io
 from datetime import datetime
 
-EMOJI_DOT = "<a:BlueDot:1364125472539021352>"  # Replace with your emoji
+EMOJI_DOT = "<a:aBlueDot:1409183263330799669>"  # Replace with your emoji
 
 ticket_counter = 0
 
