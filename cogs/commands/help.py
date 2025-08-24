@@ -91,35 +91,35 @@ class HelpCommand(commands.HelpCommand):
 
     embed = discord.Embed(
         description=(
-          f"**<a:BlueDot:1364125472539021352> Server Prefix:** `{prefix}`\n"
-          f"**<a:BlueDot:1364125472539021352> Total Commands:** `{len(set(self.context.bot.walk_commands()))}`\n"
-          f"**<a:BlueDot:1364125472539021352> Type `{prefix}antinuke enable` To get started**\n"),
+          f"**<a:aBlueDot:1409183263330799669> Server Prefix:** `{prefix}`\n"
+          f"**<a:aBlueDot:1409183263330799669> Total Commands:** `{len(set(self.context.bot.walk_commands()))}`\n"
+          f"**<a:aBlueDot:1409183263330799669> Type `{prefix}antinuke enable` To get started**\n"),
         color=0x185fe5)
 
     embed.add_field(
-        name="<:Module:1330406766151860297> __**Module**__",
-        value=">>> \n <:voice:1330393386490003466> Voice\n"
-              " <:games:1330393345796603924> Games\n"
-              " <:greet:1330393349441585253> Welcomer\n"
-              " <:Autoreact:1330393356198477824> Autoreact & responder\n"
-              " <:autorole:1330393358904066148> Autorole & Invc\n"
-              " <:Extra:1330393380810657843> Fun & AI Image Gen\n"
-              " <:ignore:1330398849101205524> Ignore Channels\n" 
-              "<:logging:1392124867872165969> Advance Logging\n"
-              "<:InviteTracker:1392125185817051239> Invite Tracker\n"
+        name="<:Module:1409183580910780528> __**Module**__",
+        value=">>> \n <:voice:1408881896011862118> Voice\n"
+              " <:games:1408880231959367742> Games\n"
+              " <:greet:1408882041541361778> Welcomer\n"
+              " <:Autoreact:1408881402883084409> Autoreact & responder\n"
+              " <:autorole:1409184243653017768> Autorole & Invc\n"
+              " <:Extra:1408880094319218792> Fun & AI Image Gen\n"
+              " <:ignore:1408880670733897860> Ignore Channels\n" 
+              "<:logging:1408880990981455905> Advance Logging\n"
+              "<:InviteTracker:1408880829328916623> Invite Tracker\n"
     )
     
     embed.add_field(
-        name=" <:filder:1330393371650297887> __**My Features**__",
-        value=">>> \n <:security:1330393362305515560> Security\n"
-              " <:Bots:1330393366373863526> Automoderation\n"
-              " <:Utility:1330393368894902272> Utility\n"
-              " <:music:1330393374271737896> Music\n"
-              " <:Moderation:1330393377203556412> Moderation\n"
-              " <:customrole:1330393383830683710> Customrole\n"
-              " <:giveaway:1330395924299644980> Giveaway\n" 
-              '<:ticket:1355527347335467191> Ticket\n'
-              "<:VanityRoles:1392125176644108359> Vanityroles\n"
+        name=" <:filder:1408880380626604142> __**My Features**__",
+        value=">>> \n <:security:1408879647973707806> Security\n"
+              " <:Bots3:1408879785656057866> Automoderation\n"
+              " <:Utility:1408879943693373461> Utility\n"
+              " <:music:1408881261048631477> Music\n"
+              " <:Moderation:1408881135127363584> Moderation\n"
+              " <:customrole3:1409185578418704484> Customrole\n"
+              " <:giveaway:1408880526063829035> Giveaway\n" 
+              '<:ticket:1408881538673938482> Ticket\n'
+              "<:VanityRoles:1408881754428932118> Vanityroles\n"
     )
 
     embed.set_footer(
