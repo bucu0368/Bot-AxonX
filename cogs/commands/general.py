@@ -435,7 +435,7 @@ class General(commands.Cog):
   async def invite(self, ctx: commands.Context):
     embed = discord.Embed(title="Axon X Invite & Support!",
       description=
-      f"> <:icons_plus:1409181232155201647> **[Ghost X - Invite Bot](https://discord.com/oauth2/authorize?client_id=1373611245206372444&permissions=8&integration_type=0&scope=bot+applications.commands)**\n> <:icons_plus:1409181232155201647> **[Ghost X - Support](https://discord.gg/u8hxkCWCFZ)**",
+      f"> <:icons_plus:1409181232155201647> **[Avalon X - Invite Bot](https://discord.com/oauth2/authorize?client_id=1373611245206372444&permissions=8&integration_type=0&scope=bot+applications.commands)**\n> <:icons_plus:1409181232155201647> **[Avalon X - Support](https://discord.gg/u8hxkCWCFZ)**",
       color=0x0ba7ff)
 
     embed.set_footer(text=f"Requested by {ctx.author.name}",
