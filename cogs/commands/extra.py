@@ -30,8 +30,8 @@ def datetime_to_seconds(thing: datetime.datetime):
     round(time.time()) +
     (current_time - thing.replace(tzinfo=None)).total_seconds())
 
-tick = "<:tick:1327829594954530896>"
-cross = "<:CrossIcon:1327829124894429235>"
+tick = "<:tick:1408864444796370995>"
+cross = "<:CrossIcon:1408869030172819527>"
 
 
 class RoleInfoView(View):
@@ -40,7 +40,7 @@ class RoleInfoView(View):
     self.role = role
     self.author_id = author_id
 
-  @discord.ui.button(label='Show Permissions',  emoji="<:Commands:1329004882992300083>", style=discord.ButtonStyle.secondary)
+  @discord.ui.button(label='Show Permissions',  emoji="<:Commands:1408864951027761243>", style=discord.ButtonStyle.secondary)
   async def show_permissions(self, interaction: discord.Interaction, button: Button):
     if interaction.user.id != self.author_id:
           await interaction.response.send_message("Uh oh! That message doesn't belong to you. You must run this command to interact with it.", ephemeral=True)
@@ -92,11 +92,11 @@ class OverwritesView(View):
           }
 
           overwrites.append(f"**For {target.name}**\n" +
-                            "\n".join(f"  * **{perm}:** {'<:tick:1327829594954530896>' if value else '<:CrossIcon:1327829124894429235>' if value is False else '⛔'}" for perm, value in permissions.items()))
+                            "\n".join(f"  * **{perm}:** {'<:tick:1408864444796370995>' if value else '<:CrossIcon:1408869030172819527>' if value is False else '⛔'}" for perm, value in permissions.items()))
 
       embed = discord.Embed(title=f"Overwrites for {self.channel.name}", color=discord.Color.blurple())
       embed.description = "\n".join(overwrites) if overwrites else "No overwrites for this channel."
-      embed.set_footer(text="<:tick:1327829594954530896> = Allowed, <:CrossIcon:1327829124894429235> = Denied, ⛔ = None")
+      embed.set_footer(text="<:tick:1408864444796370995> = Allowed, <:CrossIcon:1408869030172819527> = Denied, ⛔ = None")
       await interaction.response.send_message(embed=embed, ephemeral=True)
 
 
@@ -198,8 +198,8 @@ class Extra(commands.Cog):
       uptime_duration_string = f"{uptime_timedelta.days} days, {uptime_timedelta.seconds // 3600} hours, {(uptime_timedelta.seconds // 60) % 60} minutes, {uptime_timedelta.seconds % 60} seconds"
 
       embed = discord.Embed(title=f"IceNode Manger Uptime", color=self.color)
-      embed.add_field(name="__UTC__", value=f"<:WarningIcon:1327829272697634937> {uptime_string}\n\n", inline=False)
-      embed.add_field(name="__Online Duration__", value=f"<a:Uptime:1368920252871737444> {uptime_duration_string}", inline=False)
+      embed.add_field(name="__UTC__", value=f"<:icons_warning:1408865290019668080> {uptime_string}\n\n", inline=False)
+      embed.add_field(name="__Online Duration__", value=f"<a:aUptime:1409178079095427072> {uptime_duration_string}", inline=False)
       embed.set_footer(text=f"Requested by {ctx.author}", icon_url=pfp)
 
       await ctx.send(embed=embed)
@@ -229,7 +229,7 @@ class Extra(commands.Cog):
 
         embed.add_field(
             name="**__About__**",
-            value=f"**Name : ** {ctx.guild.name}\n**ID :** {ctx.guild.id}\n**Owner <:owner:1329041011984433185> :** {ctx.guild.owner} (<@{ctx.guild.owner_id}>)\n**Created At : ** {c_at}\n**Members :** {len(ctx.guild.members)}",
+            value=f"**Name : ** {ctx.guild.name}\n**ID :** {ctx.guild.id}\n**Owner <a:aowner:1408876949115502664> :** {ctx.guild.owner} (<@{ctx.guild.owner_id}>)\n**Created At : ** {c_at}\n**Members :** {len(ctx.guild.members)}",
             inline=False
         )
 
@@ -247,7 +247,7 @@ class Extra(commands.Cog):
         )
 
         if ctx.guild.features:
-            features = "\n".join([f"<:tick:1327829594954530896>: {feature[:1].upper() + feature[1:].lower().replace('_', ' ')}" for feature in ctx.guild.features])
+            features = "\n".join([f"<:tick:1408864444796370995>: {feature[:1].upper() + feature[1:].lower().replace('_', ' ')}" for feature in ctx.guild.features])
             embed.add_field(
                 name="**__Features__**",
                 value=f"{features if len(features) <= 1024 else features[0:1000] + '...and more'}",
@@ -272,7 +272,7 @@ class Extra(commands.Cog):
 
         embed.add_field(
             name="**__Boost Status__**",
-            value=f"Level: {ctx.guild.premium_tier} [<:icon_booster:1327842151962513515>{ctx.guild.premium_subscription_count} boosts]",
+            value=f"Level: {ctx.guild.premium_tier} [<:icon_booster:1409178434541846688>{ctx.guild.premium_subscription_count} boosts]",
             inline=False
         )
 
@@ -404,7 +404,7 @@ class Extra(commands.Cog):
 **Name:** {member}
 **ID:** {member.id}
 **Nickname:** {nickk}
-**Bot?:** {'<:tick:1327829594954530896> Yes' if member.bot else '<:CrossIcon:1327829124894429235> No'}
+**Bot?:** {'<:tick:1408864444796370995> Yes' if member.bot else '<:CrossIcon:1408869030172819527> No'}
 **Badges:** {badges}
 **Account Created:** <t:{round(member.created_at.timestamp())}:R>
 **Server Joined:** {joinedat}
@@ -488,7 +488,7 @@ class Extra(commands.Cog):
   @commands.cooldown(1, 3, commands.BucketType.user)
   async def boosts(self, ctx):
     await ctx.send(
-      embed=discord.Embed(title=f"<:icon_booster:1327842151962513515> Boosts Count Of {ctx.guild.name}",
+      embed=discord.Embed(title=f"<:icon_booster:1409178434541846688> Boosts Count Of {ctx.guild.name}",
                           description="**Total `%s` boosts**" %
                           (ctx.guild.premium_subscription_count),
                           color=self.color))
@@ -1023,7 +1023,7 @@ class Extra(commands.Cog):
   @ignore_check()
   @commands.cooldown(1, 30, commands.BucketType.channel)
   async def report(self, ctx, *, bug):
-    channel = self.bot.get_channel(1373962059460382810)
+    channel = self.bot.get_channel(1408861087591432194)
     embed = discord.Embed(title='Bug Reported',
                           description=bug,
                           color=0x000000)
@@ -1033,7 +1033,7 @@ class Extra(commands.Cog):
     embed.add_field(name="Server", value=ctx.guild.name, inline=False)
     embed.add_field(name="Channel", value=ctx.channel.name, inline=False)
     await channel.send(embed=embed)
-    confirm_embed = discord.Embed(title="<:tick:1327829594954530896> Bug Reported",
+    confirm_embed = discord.Embed(title="<:tick:1408864444796370995> Bug Reported",
       description="Thank you for reporting the bug. We will look into it.",
       color=0x000000)
     await ctx.reply(embed=confirm_embed)
