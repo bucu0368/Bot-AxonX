@@ -102,7 +102,7 @@ class AntiMassMention(commands.Cog):
                 await message.delete()
                     
                 simple_embed = discord.Embed(title="Automod Anti Mass-Mention", color=0xff0000)
-                simple_embed.description = f"<:tick:1327829594954530896> | {user.mention} has been successfully **{action_taken}** for **mass mentioning.**"
+                simple_embed.description = f"<:tick:1408864444796370995> | {user.mention} has been successfully **{action_taken}** for **mass mentioning.**"
                 
                 simple_embed.set_footer(text="Use the “automod logging” command to get automod logs if it is not enabled.", icon_url=self.bot.user.avatar.url)
                 await channel.send(embed=simple_embed, delete_after=30)
