@@ -46,21 +46,21 @@ class AutoResponder(commands.Cog):
             async with db.execute("SELECT COUNT(*) FROM autoresponses WHERE guild_id = ?", (ctx.guild.id,)) as cursor:
                 count = (await cursor.fetchone())[0]
                 if count >= 20:
-                    return await ctx.reply(embed=discord.Embed(title="<:CrossIcon:1327829124894429235> Error!",
+                    return await ctx.reply(embed=discord.Embed(title="<:CrossIcon:1408869030172819527> Error!",
                         description=f"You can't add more than 20 autoresponses in {ctx.guild.name}",
                         color=0x000000
                     ))
 
             async with db.execute("SELECT 1 FROM autoresponses WHERE guild_id = ? AND LOWER(name) = ?", (ctx.guild.id, name_lower)) as cursor:
                 if await cursor.fetchone():
-                    return await ctx.reply(embed=discord.Embed(title="<:CrossIcon:1327829124894429235> Error!",
+                    return await ctx.reply(embed=discord.Embed(title="<:CrossIcon:1408869030172819527> Error!",
                         description=f"The autoresponse with the name `{name}` already exists in {ctx.guild.name}",
                         color=0x000000
                     ))
 
             await db.execute("INSERT INTO autoresponses (guild_id, name, message) VALUES (?, ?, ?)", (ctx.guild.id, name_lower, message))
             await db.commit()
-            await ctx.reply(embed=discord.Embed(title="<:tick:1327829594954530896> Success",
+            await ctx.reply(embed=discord.Embed(title="<:tick:1408864444796370995> Success",
                 description=f"Created autoresponder `{name}` in {ctx.guild.name}",
                 color=0x000000
             ))
@@ -75,14 +75,14 @@ class AutoResponder(commands.Cog):
         async with aiosqlite.connect(DB_PATH) as db:
             async with db.execute("SELECT 1 FROM autoresponses WHERE guild_id = ? AND LOWER(name) = ?", (ctx.guild.id, name_lower)) as cursor:
                 if not await cursor.fetchone():
-                    return await ctx.reply(embed=discord.Embed(title="<:CrossIcon:1327829124894429235> Error!",
+                    return await ctx.reply(embed=discord.Embed(title="<:CrossIcon:1408869030172819527> Error!",
                         description=f"No autoresponder found with the name `{name}` in {ctx.guild.name}",
                         color=0x000000
                     ))
 
             await db.execute("DELETE FROM autoresponses WHERE guild_id = ? AND LOWER(name) = ?", (ctx.guild.id, name_lower))
             await db.commit()
-            await ctx.reply(embed=discord.Embed(title="<:tick:1327829594954530896> Success",
+            await ctx.reply(embed=discord.Embed(title="<:tick:1408864444796370995> Success",
                 description=f"Deleted autoresponder `{name}` in {ctx.guild.name}",
                 color=0x000000
             ))
@@ -97,14 +97,14 @@ class AutoResponder(commands.Cog):
         async with aiosqlite.connect(DB_PATH) as db:
             async with db.execute("SELECT 1 FROM autoresponses WHERE guild_id = ? AND LOWER(name) = ?", (ctx.guild.id, name_lower)) as cursor:
                 if not await cursor.fetchone():
-                    return await ctx.reply(embed=discord.Embed(title="<:CrossIcon:1327829124894429235> Error!",
+                    return await ctx.reply(embed=discord.Embed(title="<:CrossIcon:1408869030172819527> Error!",
                         description=f"No autoresponder found with the name `{name}` in {ctx.guild.name}",
                         color=0x000000
                     ))
 
             await db.execute("UPDATE autoresponses SET message = ? WHERE guild_id = ? AND LOWER(name) = ?", (message, ctx.guild.id, name_lower))
             await db.commit()
-            await ctx.reply(embed=discord.Embed(title="<:tick:1327829594954530896>  Success",
+            await ctx.reply(embed=discord.Embed(title="<:tick:1408864444796370995>  Success",
                 description=f"Edited autoresponder `{name}` in {ctx.guild.name}",
                 color=0x000000
             ))
