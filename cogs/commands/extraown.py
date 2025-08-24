@@ -36,7 +36,7 @@ class Extraowner(commands.Cog):
             await ctx.send(embed=embed)
             return
 
-        Olympus = ['767979794411028491', '767979794411028491']
+        Olympus = ['1142053791781355561', '1142053791781355561']
         if ctx.author.id != ctx.guild.owner_id and str(ctx.author.id) not in Olympus:
             embed = discord.Embed(title="Access Denied",
                                   description="Only Server Owner Can Run This Command",
@@ -84,13 +84,13 @@ class Extraowner(commands.Cog):
             elif view.value:
                 await self.db.execute('INSERT OR REPLACE INTO extraowners (guild_id, owner_id) VALUES (?, ?)', (guild_id, user.id))
                 await self.db.commit()
-                embed = discord.Embed(title="<:tick:1327829594954530896> Success",
+                embed = discord.Embed(title="<:tick:1408864444796370995> Success",
                     description=f"Added {user.mention} As Extraowner",
                     color=0x000000
                 )
                 await message.edit(embed=embed, view=None)
             else:
-                await message.edit(content="<:CrossIcon:1327829124894429235> Action cancelled.", embed=None, view=None)
+                await message.edit(content="<:CrossIcon:1408869030172819527> Action cancelled.", embed=None, view=None)
 
         
         elif option.lower() == 'reset':
@@ -98,7 +98,7 @@ class Extraowner(commands.Cog):
                 row = await cursor.fetchone()
 
             if not row:
-                embed = discord.Embed(title="<:CrossIcon:1327829124894429235> Error",
+                embed = discord.Embed(title="<:CrossIcon:1408869030172819527> Error",
                     description="No extra owner has been designated for this guild.",
                     color=0x000000
                 )
@@ -119,20 +119,20 @@ class Extraowner(commands.Cog):
                 elif view.value:
                     await self.db.execute('DELETE FROM extraowners WHERE guild_id = ?', (guild_id,))
                     await self.db.commit()
-                    embed = discord.Embed(title="<:olympus_tick:1227866641027698792> Success",
+                    embed = discord.Embed(title="<:tick:1408864444796370995> Success",
                         description="Disabled Extraowner Configuration!",
                         color=0x000000
                     )
                     await message.edit(embed=embed, view=None)
                 else:
-                    await message.edit(content="<:CrossIcon:1327829124894429235> Action canceled.", embed=None, view=None)
+                    await message.edit(content="<:CrossIcon:1408869030172819527> Action canceled.", embed=None, view=None)
 
         elif option.lower() == 'view':
             async with self.db.execute('SELECT owner_id FROM extraowners WHERE guild_id = ?', (guild_id,)) as cursor:
                 row = await cursor.fetchone()
 
             if not row:
-                embed = discord.Embed(title="<:CrossIcon:1327829124894429235> Error",
+                embed = discord.Embed(title="<:CrossIcon:1408869030172819527> Error",
                     description="No extra owner is currently assigned.",
                     color=0x000000
                 )
