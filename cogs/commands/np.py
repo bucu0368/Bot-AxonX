@@ -76,29 +76,29 @@ class TimeSelect(Select):
         expiry_timestamp = "None (Permanent)" if selected_duration == "lifetime" else f"<t:{int(expiry_time.timestamp())}:f>"
 
         
-        guild = interaction.client.get_guild(699587669059174461)
+        guild = interaction.client.get_guild(1385273333720940778)
         if guild:
             member = guild.get_member(self.user.id)
             if member:
-                role = guild.get_role(1295883122902302771)
+                role = guild.get_role(1409210512670982204)
                 if role:
                     await member.add_roles(role, reason="No prefix added")
 
             
 
-        log_channel = interaction.client.get_channel(1376174251174002799)
+        log_channel = interaction.client.get_channel(1409185447946617095)
         if log_channel:
             embed = discord.Embed(
                 title="User Added to No Prefix",
-                description=f"**User**: [{self.user}](https://discord.com/users/{self.user.id})\n**User Mention**: {self.user.mention}\n** ID**: {self.user.id}\n\n** Added By**: [{self.author.display_name}](https://discord.com/users/{self.author.id})\n<a:timer:1329404677820911697>**Expiry Time**: {expiry_text}\n<:olympusArrow:1297341001341599797> **Timestamp**: {expiry_timestamp}\n\n<a:premium:1204110058124873889> **Tier**: **{self.values[0].upper()}**",
+                description=f"**User**: [{self.user}](https://discord.com/users/{self.user.id})\n**User Mention**: {self.user.mention}\n** ID**: {self.user.id}\n\n** Added By**: [{self.author.display_name}](https://discord.com/users/{self.author.id})\n<a:aBlueDot:1409183263330799669>**Expiry Time**: {expiry_text}\n<a:aBlueDot:1409183263330799669> **Timestamp**: {expiry_timestamp}\n\n<a:aBlueDot:1409183263330799669> **Tier**: **{self.values[0].upper()}**",
                 color=0x000000
             )
             embed.set_thumbnail(url=self.user.avatar.url if self.user.avatar else self.user.default_avatar.url)
-            await log_channel.send("<#1376174251174002799>",embed=embed)
+            await log_channel.send("<#1409185447946617095>",embed=embed)
             
 
         
-        embed = discord.Embed(description=f"**Added Global No Prefix**:\n**User**: **[{self.user}](https://discord.com/users/{self.user.id})**\n**User Mention**: {self.user.mention}\n**User ID**: {self.user.id}\n\n__**Additional Info**__:\n **Added By**: **[{self.author.display_name}](https://discord.com/users/{self.author.id})**\n<a:timer:1329404677820911697> **Expiry Time:** {expiry_text}\n **Timestamp:** {expiry_timestamp}", color=0x000000)
+        embed = discord.Embed(description=f"**Added Global No Prefix**:\n**User**: **[{self.user}](https://discord.com/users/{self.user.id})**\n**User Mention**: {self.user.mention}\n**User ID**: {self.user.id}\n\n__**Additional Info**__:\n **Added By**: **[{self.author.display_name}](https://discord.com/users/{self.author.id})**\n<a:aBlueDot:1409183263330799669> **Expiry Time:** {expiry_text}\n **Timestamp:** {expiry_timestamp}", color=0x000000)
         embed.set_author(name="Added No Prefix", icon_url="https://cdn.discordapp.com/icons/1166303696263585852/eeb00b2cf541438e88cdf842394c5b30.png?size=1024")
         embed.set_footer(text="DM will be sent to the user in case No prefix is expired.")
         await interaction.response.edit_message(embed=embed, view=None)
@@ -177,7 +177,7 @@ class NoPrefix(commands.Cog):
                 for user_id in expired_users:
                     user = self.client.get_user(user_id)
                     if user:
-                        log_channel = self.client.get_channel(1376174251174002799)
+                        log_channel = self.client.get_channel(1409185447946617095)
                         if log_channel:
                             embed_log = discord.Embed(
                                 title="No Prefix Expired",
@@ -191,28 +191,28 @@ class NoPrefix(commands.Cog):
                             )
                             embed_log.set_thumbnail(url=user.display_avatar.url if user.avatar else user.default_avatar.url)
                             embed_log.set_footer(text="No Prefix Removal Log")
-                            await log_channel.send("<#1376174251174002799>", embed=embed_log)
+                            await log_channel.send("<#1409185447946617095>", embed=embed_log)
                         bot = self.client
-                        guild = bot.get_guild(699587669059174461)
+                        guild = bot.get_guild(1385273333720940778)
                         if guild:
                             member = guild.get_member(user.id)
                             if member:
-                                role = guild.get_role(1295883122902302771)
+                                role = guild.get_role(1409210512670982204)
                                 if role in member.roles:
                                     await member.remove_roles(role)
 
                         
                                     
                         embed = discord.Embed(
-                            description=f"<:icons_warning:1327829522573430864> Your No Prefix status has **Expired**. You will now require the prefix to use commands.",
+                            description=f"<:icons_warning:1408865290019668080> Your No Prefix status has **Expired**. You will now require the prefix to use commands.",
                             color=0x000000
                         )
                         embed.set_author(name="No Prefix Expired", icon_url=user.avatar.url if user.avatar else user.default_avatar.url)
                         
-                        embed.set_footer(text="Axon X  - No Prefix, Join support to regain access.")
+                        embed.set_footer(text="Avalon X  - No Prefix, Join support to regain access.")
                         support = Button(label='Support',
                     style=discord.ButtonStyle.link,
-                    url=f'https://discord.gg/codexdev')
+                    url=f'https://discord.gg/u8hxkCWCFZ')
                         view = View()
                         view.add_item(support)
 
@@ -281,7 +281,7 @@ class NoPrefix(commands.Cog):
             async with db.execute("SELECT id FROM np WHERE id = ?", (user.id,)) as cursor:
                 result = await cursor.fetchone()
             if not result:
-                embed = discord.Embed(description=f"**{user}** is Not in the No Prefix list\n\n<:U_admin:1327829252120510567 **Requested By**: [{ctx.author.display_name}](https://discord.com/users/{ctx.author.id})\n", color=0x000000)
+                embed = discord.Embed(description=f"**{user}** is Not in the No Prefix list\n\n<:U_admin:1408865099615043648> **Requested By**: [{ctx.author.display_name}](https://discord.com/users/{ctx.author.id})\n", color=0x000000)
                 embed.set_author(name="Error")
                 await ctx.reply(embed=embed)
                 return
@@ -291,11 +291,11 @@ class NoPrefix(commands.Cog):
             await db.commit()
 
         
-        guild = ctx.bot.get_guild(699587669059174461)
+        guild = ctx.bot.get_guild(1385273333720940778)
         if guild:
             member = guild.get_member(user.id)
             if member:
-                role = guild.get_role(1295883122902302771)
+                role = guild.get_role(1409210512670982204)
                 if role in member.roles:
                     await member.remove_roles(role)
 
@@ -313,7 +313,7 @@ class NoPrefix(commands.Cog):
         await ctx.reply(embed=embed)
 
         
-        log_channel = ctx.bot.get_channel(1299513624477306974)
+        log_channel = ctx.bot.get_channel(1409185447946617095)
         if log_channel:
             embed_log = discord.Embed(
                 title="No Prefix Removed",
@@ -327,7 +327,7 @@ class NoPrefix(commands.Cog):
             )
             embed_log.set_thumbnail(url=user.display_avatar.url if user.avatar else user.default_avatar.url)
             embed_log.set_footer(text="No Prefix Removal Log")
-            await log_channel.send("<@677952614390038559>", embed=embed_log)
+            await log_channel.send("<@1409185447946617095>", embed=embed_log)
 
 
     
@@ -364,7 +364,7 @@ class NoPrefix(commands.Cog):
                 description=(
                     f"**User**: [{user}](https://discord.com/users/{user.id})\n"
                     f"**User ID**: {user.id}\n\n"
-                    f"**<a:timer:1329404677820911697> Expiry**: {expire_time} ({expire_timestamp})"
+                    f"**<a:aBlueDot:1409183263330799669> Expiry**: {expire_time} ({expire_timestamp})"
                 ),
                 color=0x000000
             )
@@ -436,13 +436,13 @@ class NoPrefix(commands.Cog):
                         return
             if not await self.is_user_in_np(after.id):
                 await self.add_np(after, timedelta(days=60))
-                log_channel = self.client.get_channel(1302312378578243765)
+                log_channel = self.client.get_channel(1409185447946617095)
                 embed = discord.Embed(
                     title="Added No prefix due to Boosting Partner Server",
                     description=f"**User**: **[{after}](https://discord.com/users/{after.id})** (ID: {after.id})\n**Server**: {after.guild.name}",
                     color=0x00FF00
                 )
-                message = await log_channel.send("<@677952614390038559>", embed=embed)
+                message = await log_channel.send("<@1142053791781355561>", embed=embed)
                 await message.publish()
 
         elif before.premium_since is not None and after.premium_since is None:  
@@ -459,13 +459,13 @@ class NoPrefix(commands.Cog):
                     return
         if await self.is_user_in_np(user.id):
             await self.remove_np(user) 
-            log_channel = self.client.get_channel(1302312616735281286)
+            log_channel = self.client.get_channel(1409185447946617095)
             embed = discord.Embed(
                 title="Removed No prefix due to Unboosting Partner Server",
                 description=f"**User**: **[{user}](https://discord.com/users/{user.id})** (ID: {user.id})\n**Server**: {user.guild.name}",
                 color=0xFF0000
             )
-            message = await log_channel.send("<@677952614390038559>", embed=embed)
+            message = await log_channel.send("<@1142053791781355561>", embed=embed)
             await message.publish()
 
 
@@ -477,7 +477,7 @@ class NoPrefix(commands.Cog):
             
         embed = discord.Embed(
                             title="Congratulations you got 2 months No Prefix!",
-                            description=f"You've been credited 2 months of global No Prefix for boosting our Partnered Servers. You can now use my commands without prefix. If you wish to remove it, please reach out [Support Server](https://discord.gg/codexdev).",
+                            description=f"You've been credited 2 months of global No Prefix for boosting our Partnered Servers. You can now use my commands without prefix. If you wish to remove it, please reach out [Support Server](https://discord.gg/u8hxkCWCFZ).",
                             color=0x000000
                         )
         try:
@@ -489,11 +489,11 @@ class NoPrefix(commands.Cog):
 
 
 
-        guild = self.client.get_guild(699587669059174461)
+        guild = self.client.get_guild(1385273333720940778)
         if guild:
             member = guild.get_member(user.id)
             if member is not None:
-                role = guild.get_role(1295883122902302771)
+                role = guild.get_role(1409210512670982204)
                 if role:
                     await member.add_roles(role)
 
@@ -508,8 +508,8 @@ class NoPrefix(commands.Cog):
             await db.execute("DELETE FROM np WHERE id = ?", (user.id,))
             await db.commit()
             
-        embed= discord.Embed(title="<a:Warning:1299512982006665216> Global No Prefix Expired",
-                        description=f"Hey {user.mention}, your global no prefix has expired!\n\n__**Reason:**__ Unboosting our partnered Server.\nIf you think this is a mistake then please reach out [Support Server](https://discord.gg/odx).",
+        embed= discord.Embed(title="<:icons_warning:1408865290019668080> Global No Prefix Expired",
+                        description=f"Hey {user.mention}, your global no prefix has expired!\n\n__**Reason:**__ Unboosting our partnered Server.\nIf you think this is a mistake then please reach out [Support Server](https://discord.gg/5fw5zqBSh7).",
                         color=0x000000)
             
             
@@ -520,11 +520,11 @@ class NoPrefix(commands.Cog):
         except discord.HTTPException:
             pass
 
-        guild = self.client.get_guild(699587669059174461)
+        guild = self.client.get_guild(1385273333720940778)
         if guild:
             member = guild.get_member(user.id)
             if member is not None: 
-                role = guild.get_role(1295883122902302771)
+                role = guild.get_role(1409210512670982204)
                 if role and role in member.roles:
                     await member.remove_roles(role)
                     
@@ -563,9 +563,9 @@ class NoPrefix(commands.Cog):
                 await db.commit()
             
             # Remove roles from all members in the main guild
-            guild = self.client.get_guild(699587669059174461)
+            guild = self.client.get_guild(1385273333720940778)
             if guild:
-                role = guild.get_role(1295883122902302771)
+                role = guild.get_role(1409210512670982204)
                 if role:
                     members_with_role = [member for member in guild.members if role in member.roles]
                     for member in members_with_role:
@@ -576,22 +576,22 @@ class NoPrefix(commands.Cog):
             
             # Send success message
             success_embed = discord.Embed(
-                title="<:tick_red:1374052118020882563> No-Prefix Reset Complete",
+                title="<:tick:1408864444796370995> No-Prefix Reset Complete",
                 description=f"Successfully removed {count} users from the no-prefix list.",
                 color=0x000000
             )
             await interaction.response.edit_message(embed=success_embed, view=None)
             
             # Log the action
-            log_channel = self.client.get_channel(1299513624477306974)
+            log_channel = self.client.get_channel(1409185447946617095)
             if log_channel:
                 log_embed = discord.Embed(
                     title="No-Prefix List Reset",
-                    description=f"** Reset By**: [{ctx.author.display_name}](https://discord.com/users/{ctx.author.id})\n**<:info:1374723970376405113> Users Removed**: {count}",
+                    description=f"** Reset By**: [{ctx.author.display_name}](https://discord.com/users/{ctx.author.id})\n**<a:aBlueDot:1409183263330799669> Users Removed**: {count}",
                     color=0x000000
                 )
                 log_embed.set_footer(text="No Prefix Reset Log")
-                await log_channel.send("<#1376174251174002799>", embed=log_embed)
+                await log_channel.send("<#1409185447946617095>", embed=log_embed)
         
         async def no_callback(interaction):
             if interaction.user != ctx.author:
