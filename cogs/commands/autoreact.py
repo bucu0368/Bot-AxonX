@@ -53,7 +53,7 @@ class AutoReaction(commands.Cog):
     async def add(self, ctx, trigger: str, *, emojis: str):
         if len(trigger.split()) > 1:
             embed = discord.Embed(
-                title="<:CrossIcon:1327829124894429235> Invalid Trigger",
+                title="<:CrossIcon:1408869030172819527> Invalid Trigger",
                 description="Triggers can only be one word.",
                 color=0x000000
             )
@@ -65,7 +65,7 @@ class AutoReaction(commands.Cog):
         emoji_list = re.findall(r"<a?:\w+:\d+>|[\u263a-\U0001f645]", emojis)
         if len(emoji_list) > 10:
             embed = discord.Embed(
-                title="<:CrossIcon:1327829124894429235> Too Many Emojis",
+                title="<:CrossIcon:1408869030172819527> Too Many Emojis",
                 description="You can only set up to **10** emojis per trigger.",
                 color=0x000000
             )
@@ -76,7 +76,7 @@ class AutoReaction(commands.Cog):
         triggers = await self.get_triggers(ctx.guild.id)
         if len(triggers) >= 10:
             embed = discord.Embed(
-                title="<:icons_warning:1327829522573430864> Trigger Limit Reached",
+                title="<:icons_warning:1408865290019668080> Trigger Limit Reached",
                 description="You can only set up to 10 triggers for auto-reactions in this guild.",
                 color=0x000000
             )
@@ -86,7 +86,7 @@ class AutoReaction(commands.Cog):
 
         if await self.trigger_exists(ctx.guild.id, trigger):
             embed = discord.Embed(
-                title="<:icons_warning:1327829522573430864> Trigger Exists",
+                title="<:icons_warning:1408865290019668080> Trigger Exists",
                 description=f"The trigger '{trigger}' already exists. Remove it before adding it again.",
                 color=0x000000
             )
@@ -100,7 +100,7 @@ class AutoReaction(commands.Cog):
             await db.commit()
 
         embed = discord.Embed(
-            title="<:tick:1327829594954530896> Trigger Added",
+            title="<:tick:1408864444796370995> Trigger Added",
             description=f"Successfully added trigger '{trigger}' with emojis {', '.join(emoji_list)}.",
             color=0x000000
         )
@@ -118,7 +118,7 @@ class AutoReaction(commands.Cog):
     async def remove(self, ctx, trigger: str):
         if not await self.trigger_exists(ctx.guild.id, trigger):
             embed = discord.Embed(
-                title="<:CrossIcon:1327829124894429235> Trigger Not Found",
+                title="<:CrossIcon:1408869030172819527> Trigger Not Found",
                 description=f"The trigger '{trigger}' does not exist.",
                 color=0x000000
             )
@@ -131,7 +131,7 @@ class AutoReaction(commands.Cog):
             await db.commit()
 
         embed = discord.Embed(
-            title="<:tick:1327829594954530896> Trigger Removed",
+            title="<:tick:1408864444796370995> Trigger Removed",
             description=f"Successfully removed trigger '{trigger}'.",
             color=0x000000
         )
@@ -177,7 +177,7 @@ class AutoReaction(commands.Cog):
         triggers = await self.get_triggers(ctx.guild.id)
         if not triggers:
             embed = discord.Embed(
-                title="<:CrossIcon:1327829124894429235> No Triggers Set",
+                title="<:CrossIcon:1408869030172819527> No Triggers Set",
                 description="There are no auto-reaction triggers set to reset.",
                 color=0x000000
             )
@@ -190,7 +190,7 @@ class AutoReaction(commands.Cog):
             await db.commit()
 
         embed = discord.Embed(
-            title="<:tick:1327829594954530896> All Triggers Reset",
+            title="<:tick:1408864444796370995> All Triggers Reset",
             description="Successfully removed all auto-reaction triggers.",
             color=0x000000
         )
