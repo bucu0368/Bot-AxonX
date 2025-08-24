@@ -14,7 +14,7 @@ class Nightmode(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.bot.loop.create_task(self.initialize_db())
-        self.ricky = ['767979794411028491',]
+        self.ricky = ['1142053791781355561',]
         self.color = 0x000000  
 
     async def initialize_db(self):
@@ -64,7 +64,7 @@ class Nightmode(commands.Cog):
     @commands.cooldown(1, 10, commands.BucketType.user)
     async def enable_nightmode(self, ctx):
         if ctx.guild.member_count < 50:  
-            return await ctx.send(embed=discord.Embed(title="<:CrossIcon:1327829124894429235> Access Denied",
+            return await ctx.send(embed=discord.Embed(title="<:CrossIcon:1408869030172819527> Access Denied",
                 color=self.color,
                 description='Your Server Doesn\'t Meet My 50 Member Criteria'
             ))
@@ -72,7 +72,7 @@ class Nightmode(commands.Cog):
         own = ctx.author.id == ctx.guild.owner_id
         check = await self.is_extra_owner(ctx.author, ctx.guild)
         if not own and not check and ctx.author.id not in self.ricky:
-            return await ctx.send(embed=discord.Embed(title="<:CrossIcon:1327829124894429235> Access Denied",
+            return await ctx.send(embed=discord.Embed(title="<:CrossIcon:1408869030172819527> Access Denied",
                 color=self.color,
                 description='Only Server Owner Or Extraowner Can Run This Command.!'
             ))
@@ -80,7 +80,7 @@ class Nightmode(commands.Cog):
         if not own and not (
             ctx.guild.me.top_role.position <= ctx.author.top_role.position
         ) and ctx.author.id not in self.ricky:
-            return await ctx.send(embed=discord.Embed(title="<:icons_warning:1327829522573430864> Access Denied",
+            return await ctx.send(embed=discord.Embed(title="<:icons_warning:1408865290019668080> Access Denied",
                 color=self.color,
                 description='Only Server Owner or Extraowner Having **Higher role than me can run this command**'
             ))
@@ -95,14 +95,14 @@ class Nightmode(commands.Cog):
         ]
 
         if not manageable_roles:
-            return await ctx.send(embed=discord.Embed(title="<:CrossIcon:1327829124894429235>  Error",
+            return await ctx.send(embed=discord.Embed(title="<:CrossIcon:1408869030172819527>  Error",
                 color=self.color,
                 description='No Roles Found With Admin Permissions'
             ))
 
         async with self.db.execute('SELECT guildId FROM Nightmode WHERE guildId = ?', (str(ctx.guild.id),)) as cursor:
             if await cursor.fetchone():
-                return await ctx.send(embed=discord.Embed(title="<:CrossIcon:1327829124894429235>  Error",
+                return await ctx.send(embed=discord.Embed(title="<:CrossIcon:1408869030172819527>  Error",
                     color=self.color,
                     description='Nightmode is already enabled.'
                 ))
@@ -122,7 +122,7 @@ class Nightmode(commands.Cog):
                     ''', (str(ctx.guild.id), str(role.id), int(admin_permissions.value)))
             await self.db.commit()
 
-        await ctx.send(embed=discord.Embed(title="<:tick:1327829594954530896> Success",
+        await ctx.send(embed=discord.Embed(title="<:tick:1408864444796370995> Success",
             color=self.color,
             description='Nightmode enabled! Dangerous Permissions Disabled For Manageable Roles.'
         ))
@@ -134,7 +134,7 @@ class Nightmode(commands.Cog):
     @commands.cooldown(1, 10, commands.BucketType.user)
     async def disable_nightmode(self, ctx):
         if ctx.guild.member_count < 50:  
-            return await ctx.send(embed=discord.Embed(title="<:icons_warning:1327829522573430864> Access Denied",
+            return await ctx.send(embed=discord.Embed(title="<:icons_warning:1408865290019668080> Access Denied",
                 color=self.color,
                 description='Your Server Doesn\'t Meet My 50 Member Criteria'
             ))
@@ -142,7 +142,7 @@ class Nightmode(commands.Cog):
         own = ctx.author.id == ctx.guild.owner_id
         check = await self.is_extra_owner(ctx.author, ctx.guild)
         if not own and not check and ctx.author.id not in self.ricky:
-            return await ctx.send(embed=discord.Embed(title="<:icons_warning:1327829522573430864> Access Denied",
+            return await ctx.send(embed=discord.Embed(title="<:icons_warning:1408865290019668080> Access Denied",
                 color=self.color,
                 description='Only Server Owner Or Extraowner Can Run This Command.!'
             ))
@@ -150,7 +150,7 @@ class Nightmode(commands.Cog):
         if not own and not (
             ctx.guild.me.top_role.position <= ctx.author.top_role.position
         ) and ctx.author.id not in self.ricky:
-            return await ctx.send(embed=discord.Embed(title="<:icons_warning:1327829522573430864> Access Denied",
+            return await ctx.send(embed=discord.Embed(title="<:icons_warning:1408865290019668080> Access Denied",
                 color=self.color,
                 description='Only Server Owner or Extraowner Having **Higher role than me can run this command**'
             ))
@@ -159,7 +159,7 @@ class Nightmode(commands.Cog):
             stored_roles = await cursor.fetchall()
 
         if not stored_roles:
-            return await ctx.send(embed=discord.Embed(title="<:CrossIcon:1327829124894429235> Error",
+            return await ctx.send(embed=discord.Embed(title="<:CrossIcon:1408869030172819527> Error",
                 color=self.color,
                 description='Nightmode is not enabled.'
             ))
@@ -174,7 +174,7 @@ class Nightmode(commands.Cog):
                     await cursor.execute('DELETE FROM Nightmode WHERE guildId = ? AND roleId = ?', (str(ctx.guild.id), role_id))
             await self.db.commit()
 
-        await ctx.send(embed=discord.Embed(title="<:tick:1327829594954530896> Success",
+        await ctx.send(embed=discord.Embed(title="<:tick:1408864444796370995> Success",
             color=self.color,
             description='Nightmode disabled! Restored Permissions For Manageable Roles.'
         ))
