@@ -105,8 +105,8 @@ class HelpCommand(commands.HelpCommand):
               " <:autorole:1409184243653017768> Autorole & Invc\n"
               " <:Extra:1408880094319218792> Fun & AI Image Gen\n"
               " <:ignore:1408880670733897860> Ignore Channels\n" 
-              "<:logging:1408880990981455905> Advance Logging\n"
-              "<:InviteTracker:1408880829328916623> Invite Tracker\n"
+              " <:logging:1408880990981455905> Advance Logging\n"
+              " <:InviteTracker:1408880829328916623> Invite Tracker\n"
     )
     
     embed.add_field(
@@ -118,8 +118,8 @@ class HelpCommand(commands.HelpCommand):
               " <:Moderation:1408881135127363584> Moderation\n"
               " <:customrole3:1409185578418704484> Customrole\n"
               " <:giveaway:1408880526063829035> Giveaway\n" 
-              '<:ticket:1408881538673938482> Ticket\n'
-              "<:VanityRoles:1408881754428932118> Vanityroles\n"
+              ' <:ticket:1408881538673938482> Ticket\n'
+              " <:VanityRoles:1408881754428932118> Vanityroles\n"
     )
 
     embed.set_footer(
